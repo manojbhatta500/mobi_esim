@@ -1,0 +1,47 @@
+import 'package:flutter/material.dart';
+import 'package:mobi_esim/screens/navbar/countrybundle.dart';
+import 'package:mobi_esim/screens/navbar/profilepage.dart';
+
+class Navigate extends StatefulWidget {
+  const Navigate({super.key});
+
+  @override
+  State<Navigate> createState() => _NavigateState();
+}
+
+class _NavigateState extends State<Navigate> {
+  int _selectedIndex = 0;
+
+  final List<Widget> _pages = [
+    CountryBundle(),
+    ProfilePage(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+        child: Scaffold(
+      body: _pages[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+      ),
+    ));
+  }
+}

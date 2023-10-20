@@ -117,7 +117,7 @@ class Verify extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, '/welcome');
+                Navigator.pushNamed(context, '/failed'); //'/welcome'
               },
               child: Container(
                 height: 0.07 * height,

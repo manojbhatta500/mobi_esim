@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mobi_esim/screens/tabpages/global.dart';
+import 'package:mobi_esim/screens/navbar/countrybundles/tabpages/global.dart';
 
-import 'package:mobi_esim/screens/tabpages/countrylist.dart';
-import 'package:mobi_esim/screens/tabpages/regions.dart';
+import 'package:mobi_esim/screens/navbar/countrybundles/tabpages/countrylist.dart';
+import 'package:mobi_esim/screens/navbar/countrybundles/tabpages/regions.dart';
 
 class CountryBundle extends StatefulWidget {
   const CountryBundle({super.key});

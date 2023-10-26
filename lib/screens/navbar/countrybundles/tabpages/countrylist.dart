@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:country_flags/country_flags.dart';
-import 'package:mobi_esim/screens/countrydetails.dart';
+import 'package:mobi_esim/customwiget/countrydetails.dart';
 
 class CountryList extends StatelessWidget {
   const CountryList({super.key});

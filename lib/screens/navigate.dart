@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mobi_esim/screens/navbar/countrybundle.dart';
-import 'package:mobi_esim/screens/navbar/profilepage.dart';
+import 'package:mobi_esim/screens/navbar/countrybundles/countrybundle.dart';
+import 'package:mobi_esim/screens/navbar/profilepages/profilepage.dart';
 
 class Navigate extends StatefulWidget {
   const Navigate({super.key});

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mobi_esim/screens/navbar/profilepages/contactus.dart';
+import 'package:mobi_esim/screens/navbar/profilepages/deleteacc.dart';
+import 'package:mobi_esim/screens/navbar/profilepages/term.dart';
 import 'package:mobi_esim/screens/signup/failed_sign_in.dart';
-import 'package:mobi_esim/screens/faq.dart';
-import 'package:mobi_esim/screens/navbar/countrybundle.dart';
+import 'package:mobi_esim/screens/navbar/profilepages/faq.dart';
+import 'package:mobi_esim/screens/navbar/countrybundles/countrybundle.dart';
 import 'package:mobi_esim/screens/signup/signup.dart';
 import 'package:flutter/services.dart';
 import 'package:mobi_esim/screens/signup/term&con.dart';
@@ -35,7 +38,10 @@ class _RootState extends State<Root> {
         '/welcome': (context) => Welcome(),
         '/country': (context) => CountryBundle(),
         '/faq': (context) => Faq(),
-        '/failed': (context) => FailedSignin()
+        '/failed': (context) => FailedSignin(),
+        '/contactus': (context) => ContactUs(),
+        '/tandc': (context) => Term(),
+        '/delete': (context) => DeleteAcc()
       },
     );
   }

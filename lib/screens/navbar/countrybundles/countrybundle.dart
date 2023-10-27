@@ -51,10 +51,14 @@ class _CountryBundleState extends State<CountryBundle>
                       "Let’s Explore!",
                       style: TextStyle(fontSize: 20, color: Color(0xff3b57a6)),
                     ),
-                    Icon(
-                      Icons.notifications,
-                      color: Color(0xff3b57a6),
-                    )
+                    IconButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/notifications');
+                        },
+                        icon: Icon(
+                          Icons.notifications,
+                          color: Color(0xff3b57a6),
+                        ))
                   ],
                 ),
               ),

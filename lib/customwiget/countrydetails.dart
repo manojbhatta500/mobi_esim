@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobi_esim/customwiget/checkcountry.dart';
 import 'package:mobi_esim/customwiget/plandetails.dart';
 
 class CountryDetails extends StatelessWidget {
@@ -39,21 +40,82 @@ class CountryDetails extends StatelessWidget {
             SizedBox(
               height: 0.02 * height,
             ),
-            PlanDetails(
+            GestureDetector(
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    return CheckCountry(countrycode: countrycode);
+                  },
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                    ),
+                  ),
+                  isScrollControlled: true,
+                ).then((value) {
+                  print('dismissed bottom modal sheet');
+                });
+              },
+              child: PlanDetails(
                 countrycode: countrycode,
                 validity: '2',
                 data: '7',
-                covrage: countrycode),
-            PlanDetails(
-                countrycode: countrycode,
-                validity: '10',
-                data: '15',
-                covrage: countrycode),
-            PlanDetails(
-                countrycode: countrycode,
-                validity: '30',
-                data: '30',
-                covrage: countrycode),
+                covrage: countrycode,
+                checker: true,
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    return CheckCountry(countrycode: countrycode);
+                  },
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                    ),
+                  ),
+                  isScrollControlled: true,
+                ).then((value) {
+                  print('dismissed bottom modal sheet');
+                });
+              },
+              child: PlanDetails(
+                  countrycode: countrycode,
+                  validity: '10',
+                  checker: true,
+                  data: '15',
+                  covrage: countrycode),
+            ),
+            GestureDetector(
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    return CheckCountry(countrycode: countrycode);
+                  },
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                    ),
+                  ),
+                  isScrollControlled: true,
+                ).then((value) {
+                  print('dismissed bottom modal sheet');
+                });
+              },
+              child: PlanDetails(
+                  countrycode: countrycode,
+                  validity: '30',
+                  checker: true,
+                  data: '30',
+                  covrage: countrycode),
+            ),
           ],
         ),
       ),

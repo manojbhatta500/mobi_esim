@@ -7,11 +7,13 @@ class PlanDetails extends StatelessWidget {
   final String data;
   final String covrage;
   final String countrycode;
+  final bool checker;
   PlanDetails(
       {required this.countrycode,
       required this.validity,
       required this.data,
-      required this.covrage});
+      required this.covrage,
+      required this.checker});
 
   @override
   Widget build(BuildContext context) {
@@ -105,20 +107,30 @@ class PlanDetails extends StatelessWidget {
               ),
             ],
           ),
-          Container(
-            width: 0.8 * width,
-            height: 0.06 * height,
-            decoration: BoxDecoration(
-                color: Color(0xff3b57a6),
-                borderRadius: BorderRadius.circular(20)),
-            child: Center(
-                child: Text(
-              '\$5.50-View details',
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            )),
-          )
+          checker ? FixContainer() : Container()
         ],
       ),
+    );
+  }
+}
+
+class FixContainer extends StatelessWidget {
+  const FixContainer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    return Container(
+      width: 0.8 * width,
+      height: 0.06 * height,
+      decoration: BoxDecoration(
+          color: Color(0xff3b57a6), borderRadius: BorderRadius.circular(20)),
+      child: Center(
+          child: Text(
+        '\$5.50-View details',
+        style: TextStyle(color: Colors.white, fontSize: 20),
+      )),
     );
   }
 }

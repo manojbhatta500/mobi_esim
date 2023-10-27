@@ -22,7 +22,6 @@ class _ContactUsState extends State<ContactUs> {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 IconButton(
                     onPressed: () {

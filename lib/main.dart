@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:mobi_esim/screens/navbar/profilepages/contactus.dart';
 import 'package:mobi_esim/screens/navbar/profilepages/deleteacc.dart';
+import 'package:mobi_esim/screens/navbar/profilepages/my_wallet.dart';
 import 'package:mobi_esim/screens/navbar/profilepages/term.dart';
+import 'package:mobi_esim/screens/notification.dart';
+import 'package:mobi_esim/screens/qr.dart';
 import 'package:mobi_esim/screens/signup/failed_sign_in.dart';
 import 'package:mobi_esim/screens/navbar/profilepages/faq.dart';
 import 'package:mobi_esim/screens/navbar/countrybundles/countrybundle.dart';
@@ -41,7 +45,10 @@ class _RootState extends State<Root> {
         '/failed': (context) => FailedSignin(),
         '/contactus': (context) => ContactUs(),
         '/tandc': (context) => Term(),
-        '/delete': (context) => DeleteAcc()
+        '/delete': (context) => DeleteAcc(),
+        '/qrcode': (context) => QrCode(),
+        '/mywallet': (context) => MyWallet(),
+        '/notifications': (context) => Notifications()
       },
     );
   }

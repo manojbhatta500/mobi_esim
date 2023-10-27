@@ -14,7 +14,6 @@ class Term extends StatelessWidget {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 IconButton(
                     onPressed: () {
@@ -25,7 +24,7 @@ class Term extends StatelessWidget {
                       color: Color(0xff3b57a6),
                     )),
                 SizedBox(
-                  width: 0.15 * width,
+                  width: 0.20 * width,
                 ),
                 Text(
                   'Terms & Conditions',

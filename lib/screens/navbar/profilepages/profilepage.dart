@@ -47,6 +47,12 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             GestureDetector(
                 onTap: () {
+                  Navigator.pushNamed(context, '/mywallet');
+                },
+                child:
+                    ProfileMenu(geticon: Icons.wallet, heading: 'my wallet')),
+            GestureDetector(
+                onTap: () {
                   Navigator.pushNamed(context, '/contactus');
                 },
                 child: ProfileMenu(geticon: Icons.call, heading: 'Contact Us')),

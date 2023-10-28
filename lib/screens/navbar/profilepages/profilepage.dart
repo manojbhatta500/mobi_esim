@@ -69,7 +69,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   geticon: Icons.assignment, heading: 'Terms And Conditions'),
             ),
             ProfileMenu(geticon: Icons.info, heading: 'About US'),
-            ProfileMenu(geticon: Icons.assignment_add, heading: 'User Guide')
+            GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/userguide');
+                },
+                child: ProfileMenu(
+                    geticon: Icons.assignment_add, heading: 'User Guide'))
           ],
         ),
       ),

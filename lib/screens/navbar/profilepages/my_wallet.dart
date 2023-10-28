@@ -21,7 +21,7 @@ class _MyWalletState extends State<MyWallet> {
       child: Column(
         children: [
           SizedBox(
-            height: 0.05 * width,
+            height: 0.01 * height,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:mobi_esim/screens/and_guide.dart';
+import 'package:mobi_esim/screens/ios_guide.dart';
 
 import 'package:mobi_esim/screens/navbar/profilepages/contactus.dart';
 import 'package:mobi_esim/screens/navbar/profilepages/deleteacc.dart';
 import 'package:mobi_esim/screens/navbar/profilepages/my_wallet.dart';
 import 'package:mobi_esim/screens/navbar/profilepages/term.dart';
+import 'package:mobi_esim/screens/navbar/profilepages/userguide.dart';
 import 'package:mobi_esim/screens/notification.dart';
 import 'package:mobi_esim/screens/qr.dart';
 import 'package:mobi_esim/screens/signup/failed_sign_in.dart';
@@ -48,7 +51,10 @@ class _RootState extends State<Root> {
         '/delete': (context) => DeleteAcc(),
         '/qrcode': (context) => QrCode(),
         '/mywallet': (context) => MyWallet(),
-        '/notifications': (context) => Notifications()
+        '/notifications': (context) => Notifications(),
+        '/userguide': (context) => UserGuide(),
+        '/iosguide': (context) => IosGuide(),
+        '/andguide': (context) => AndGuide()
       },
     );
   }

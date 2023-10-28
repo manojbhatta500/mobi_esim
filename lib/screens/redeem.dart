@@ -39,7 +39,7 @@ class _RedeemState extends State<Redeem> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+
     return Container(
       height: 0.4 * height,
       decoration: BoxDecoration(

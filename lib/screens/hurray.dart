@@ -13,7 +13,7 @@ class _HurrayState extends State<Hurray> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+
     return Container(
       height: 0.5 * height,
       decoration: BoxDecoration(

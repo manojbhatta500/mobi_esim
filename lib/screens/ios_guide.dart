@@ -95,7 +95,7 @@ class _IosGuideState extends State<IosGuide> {
             height: 0.1 * height,
           ),
           Text(
-            'How To Setup Your eSIM On Android',
+            'How To Setup Your eSIM On Ios',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           SizedBox(

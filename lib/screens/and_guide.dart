@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobi_esim/const/util.dart';
+import 'package:mobi_esim/customwiget/profile_menu.dart';
+import 'package:mobi_esim/screens/androidguide/fromcamera.dart';
+import 'package:mobi_esim/screens/androidguide/fromgallery.dart';
 
 class AndGuide extends StatefulWidget {
   const AndGuide({super.key});
@@ -30,15 +33,51 @@ class _AndGuideState extends State<AndGuide> {
                       color: Color(0xff3b57a6),
                     )),
                 SizedBox(
-                  width: 0.25 * width,
+                  width: 0.1 * width,
                 ),
                 Text(
-                  'Android',
+                  'User Guide - Android',
                   style: TextStyle(fontSize: 20, color: Color(0xff3b57a6)),
                 )
               ],
             ),
             SizedBox(
+              height: 0.05 * height,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Text('Select a method according to your device ability'),
+            ),
+            SizedBox(
+              height: 0.1 * height,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return FromCamera();
+                }));
+              },
+              child: ProfileMenu(
+                  geticon: Icons.camera, heading: 'Scan Code From Camera'),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return FromGallery();
+                }));
+              },
+              child: ProfileMenu(
+                  geticon: Icons.browse_gallery,
+                  heading: 'Scan Code From Gallery'),
+            )
+          ],
+        ),
+      ),
+    ));
+  }
+}
+/*
+SizedBox(
               height: 0.1 * height,
             ),
             Text(
@@ -109,9 +148,4 @@ class _AndGuideState extends State<AndGuide> {
             SizedBox(
               height: 10,
             ),
-          ],
-        ),
-      ),
-    ));
-  }
-}
+            */

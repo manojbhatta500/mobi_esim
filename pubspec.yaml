@@ -67,6 +67,9 @@ flutter:
     - assets/fab.png
     - assets/global.png
     - assets/qr.png
+    - assets/guide.png
+    - assets/iguide.png
+    
   
 
   # An image asset can refer to one or more resolution-specific "variants", see

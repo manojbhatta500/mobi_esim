@@ -1,39 +1,52 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobi_esim/const/util.dart';
 import 'package:mobi_esim/models/guide.dart';
 
-class IosGuide extends StatefulWidget {
-  const IosGuide({super.key});
+class FromGallery extends StatefulWidget {
+  const FromGallery({super.key});
 
   @override
-  State<IosGuide> createState() => _IosGuideState();
+  State<FromGallery> createState() => _FromGalleryState();
 }
 
-class _IosGuideState extends State<IosGuide> {
+class _FromGalleryState extends State<FromGallery> {
   List<Guide> changer = [
     Guide(
-        image: 'assets/iguide.png',
+        image: 'assets/guide.png',
         step: 1,
         text:
-            'A QR code will be delivered to you via email for activation. To learn how to access your QR code scanner and add your new line, follow these steps:'),
+            'A QR code will be delivered to you via email for activation. To learn how to access your QR code scanner and add your new line, follow these steps.'),
     Guide(
-        image: 'assets/iguide.png',
+        image: 'assets/guide.png',
         step: 2,
-        text: 'Go to the Home screen. Choose Settings.'),
+        text:
+            'Go to the Home screen. To open the menu, swipe up on the screen.'),
     Guide(
-        image: 'assets/iguide.png',
+        image: 'assets/guide.png',
         step: 3,
-        text: 'scroll down and choose celluar'),
-    Guide(image: 'assets/iguide.png', step: 4, text: 'add celluar plan'),
-    Guide(image: 'assets/iguide.png', step: 5, text: 'scan qr code via email'),
-    Guide(image: 'assets/iguide.png', step: 6, text: 'choose continue'),
-    Guide(image: 'assets/iguide.png', step: 7, text: 'choose continue'),
+        text: 'scroll to right and choose settings'),
     Guide(
-        image: 'assets/iguide.png',
+        image: 'assets/guide.png',
+        step: 4,
+        text: 'scroll down and choose connections'),
+    Guide(image: 'assets/guide.png', step: 5, text: 'choose sim card manager'),
+    Guide(image: 'assets/guide.png', step: 6, text: 'choose add mobile plan'),
+    Guide(
+        image: 'assets/guide.png',
+        step: 7,
+        text: 'choose scan carrier qr code'),
+    Guide(
+        image: 'assets/guide.png',
         step: 8,
-        text: 'turn on allow cellular data'),
-    Guide(image: 'assets/iguide.png', step: 9, text: 'turn on data roaming'),
-    Guide(image: 'assets/iguide.png', step: 10, text: 'go to home screen'),
+        text: 'point the camera at the code'),
+    Guide(image: 'assets/guide.png', step: 9, text: 'choose confirm'),
+    Guide(
+        image: 'assets/guide.png',
+        step: 10,
+        text: 'the esim is being downloaded it will take some time '),
+    Guide(image: 'assets/guide.png', step: 11, text: 'choose option '),
+    Guide(image: 'assets/guide.png', step: 12, text: 'enjoy your data '),
   ];
   int index = 0;
 
@@ -86,7 +99,7 @@ class _IosGuideState extends State<IosGuide> {
                 width: 0.1 * width,
               ),
               Text(
-                'User Guide - Ios',
+                'User Guide - Android',
                 style: TextStyle(fontSize: 20, color: Color(0xff3b57a6)),
               )
             ],

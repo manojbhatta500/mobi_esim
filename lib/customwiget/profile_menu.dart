@@ -30,7 +30,7 @@ class ProfileMenu extends StatelessWidget {
               ),
               Text(
                 '$heading',
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               )
             ],
           ),

@@ -13,40 +13,80 @@ class FromGallery extends StatefulWidget {
 class _FromGalleryState extends State<FromGallery> {
   List<Guide> changer = [
     Guide(
-        image: 'assets/guide.png',
+        image: 'assets/and/step1.png',
         step: 1,
         text:
-            'A QR code will be delivered to you via email for activation. To learn how to access your QR code scanner and add your new line, follow these steps.'),
+            "Talk to your Team of Experts to set up your postpaid plan. You will need to provide your device EID to the Expert to update your account. A QR code will be delivered to you via email for activation. To learn how to access your QR code scanner and add your new line, follow these steps:"),
     Guide(
-        image: 'assets/guide.png',
+        image: 'assets/and/step2.png',
         step: 2,
         text:
-            'Go to the Home screen. To open the menu, swipe up on the screen.'),
+            "Go to the Home screen. To open the menu, swipe up on the screen."),
     Guide(
-        image: 'assets/guide.png',
+        image: 'assets/and/step3.gif',
         step: 3,
-        text: 'scroll to right and choose settings'),
+        text: "Scroll to the right. Choose Settings."),
     Guide(
-        image: 'assets/guide.png',
+        image: 'assets/and/step4.gif',
         step: 4,
         text: 'scroll down and choose connections'),
-    Guide(image: 'assets/guide.png', step: 5, text: 'choose sim card manager'),
-    Guide(image: 'assets/guide.png', step: 6, text: 'choose add mobile plan'),
     Guide(
-        image: 'assets/guide.png',
+        image: 'assets/and/step5.gif',
+        step: 5,
+        text: 'choose sim card manager'),
+    Guide(
+        image: 'assets/and/step6.gif',
+        step: 6,
+        text: "Under eSIMs, choose Add mobile plan."),
+    Guide(
+        image: 'assets/and/step7.gif',
         step: 7,
-        text: 'choose scan carrier qr code'),
+        text: "Choose Scan carrier QR code."),
     Guide(
-        image: 'assets/guide.png',
+        image: 'assets/and/step8.png',
         step: 8,
-        text: 'point the camera at the code'),
-    Guide(image: 'assets/guide.png', step: 9, text: 'choose confirm'),
+        text: "To scan a QR code, point the camera at the code."),
+    Guide(image: 'assets/and/step9.gif', step: 9, text: 'choose confirm'),
     Guide(
-        image: 'assets/guide.png',
+        image: 'assets/and/step10.png',
         step: 10,
-        text: 'the esim is being downloaded it will take some time '),
-    Guide(image: 'assets/guide.png', step: 11, text: 'choose option '),
-    Guide(image: 'assets/guide.png', step: 12, text: 'enjoy your data '),
+        text:
+            "The eSIM profile is being downloaded. This can take up to 5 minutes."),
+    Guide(
+        image: 'assets/and/step11.gif',
+        step: 11,
+        text:
+            "You have scanned your QR code and added your postpaid plan. Return to the Home screen."),
+    Guide(
+        image: 'assets/and/step12.png',
+        step: 12,
+        text:
+            "Your phone and apps may use data when you are not aware of it. You are responsible for any data charges on other wireless networks. To turn off data roaming when you are not on the network, follow these steps:"),
+    Guide(
+        image: 'assets/and/step13.png',
+        step: 13,
+        text:
+            "Go to the Home screen. To open the menu, swipe up on the screen."),
+    Guide(
+        image: 'assets/and/step14.gif',
+        step: 14,
+        text: "Scroll to the right. Choose Settings."),
+    Guide(
+        image: 'assets/and/step15.gif',
+        step: 15,
+        text: "Scroll down. Choose Connections."),
+    Guide(
+        image: 'assets/and/step16.gif',
+        step: 16,
+        text: "Choose Mobile networks."),
+    Guide(
+        image: 'assets/and/step17.gif',
+        step: 17,
+        text: "Turn on Data roaming."),
+    Guide(
+        image: 'assets/and/step18.gif',
+        step: 18,
+        text: "Data roaming has been turned on. Return to the Home screen."),
   ];
   int index = 0;
 

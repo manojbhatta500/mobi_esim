@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobi_esim/screens/and_guide.dart';
+import 'package:mobi_esim/screens/androidguide/fromgallery.dart';
 import 'package:mobi_esim/screens/ios_guide.dart';
 
 import 'package:mobi_esim/screens/navbar/profilepages/contactus.dart';
@@ -37,7 +38,7 @@ class _RootState extends State<Root> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/signup',
+      initialRoute: '/iosguide',
       routes: {
         '/signup': (context) => Signup(),
         '/term': (context) => TcScreen(),
@@ -54,7 +55,8 @@ class _RootState extends State<Root> {
         '/notifications': (context) => Notifications(),
         '/userguide': (context) => UserGuide(),
         '/iosguide': (context) => IosGuide(),
-        '/andguide': (context) => AndGuide()
+        '/andguide': (context) => AndGuide(),
+        '/fromgallery': (context) => FromGallery()
       },
     );
   }

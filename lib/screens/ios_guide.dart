@@ -12,28 +12,42 @@ class IosGuide extends StatefulWidget {
 class _IosGuideState extends State<IosGuide> {
   List<Guide> changer = [
     Guide(
-        image: 'assets/iguide.png',
+        image: 'assets/apple/ios1.png',
         step: 1,
         text:
             'A QR code will be delivered to you via email for activation. To learn how to access your QR code scanner and add your new line, follow these steps:'),
     Guide(
-        image: 'assets/iguide.png',
+        image: 'assets/apple/ios2.gif',
         step: 2,
         text: 'Go to the Home screen. Choose Settings.'),
     Guide(
-        image: 'assets/iguide.png',
+        image: 'assets/apple/ios3.gif',
         step: 3,
         text: 'scroll down and choose celluar'),
-    Guide(image: 'assets/iguide.png', step: 4, text: 'add celluar plan'),
-    Guide(image: 'assets/iguide.png', step: 5, text: 'scan qr code via email'),
-    Guide(image: 'assets/iguide.png', step: 6, text: 'choose continue'),
-    Guide(image: 'assets/iguide.png', step: 7, text: 'choose continue'),
+    Guide(image: 'assets/apple/ios4.gif', step: 4, text: 'add celluar plan'),
     Guide(
-        image: 'assets/iguide.png',
+        image: 'assets/apple/ios5.png',
+        step: 5,
+        text: 'scan qr code via email'),
+    Guide(image: 'assets/apple/ios6.gif', step: 6, text: 'choose continue'),
+    Guide(image: 'assets/apple/ios7.gif', step: 7, text: 'choose continue'),
+    Guide(
+        image: 'assets/apple/ios8.gif',
         step: 8,
         text: 'turn on allow cellular data'),
-    Guide(image: 'assets/iguide.png', step: 9, text: 'turn on data roaming'),
-    Guide(image: 'assets/iguide.png', step: 10, text: 'go to home screen'),
+    Guide(
+        image: 'assets/apple/ios9.gif', step: 9, text: 'turn on data roaming'),
+    Guide(image: 'assets/apple/ios10.gif', step: 10, text: 'go to home screen'),
+    Guide(image: 'assets/apple/ios11.gif', step: 11, text: 'go to home screen'),
+    Guide(image: 'assets/apple/ios12.gif', step: 12, text: 'go to home screen'),
+    Guide(image: 'assets/apple/ios13.gif', step: 13, text: 'go to home screen'),
+    Guide(image: 'assets/apple/ios14.png', step: 14, text: 'go to home screen'),
+    Guide(image: 'assets/apple/ios15.png', step: 15, text: 'go to home screen'),
+    Guide(image: 'assets/apple/ios16.gif', step: 16, text: 'go to home screen'),
+    Guide(image: 'assets/apple/ios17.gif', step: 17, text: 'go to home screen'),
+    Guide(image: 'assets/apple/ios18.gif', step: 18, text: 'go to home screen'),
+    Guide(image: 'assets/apple/ios19.gif', step: 19, text: 'go to home screen'),
+    Guide(image: 'assets/apple/ios20.gif', step: 20, text: 'go to home screen'),
   ];
   int index = 0;
 

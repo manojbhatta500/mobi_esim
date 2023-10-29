@@ -38,7 +38,7 @@ class _RootState extends State<Root> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/iosguide',
+      initialRoute: '/signup',
       routes: {
         '/signup': (context) => Signup(),
         '/term': (context) => TcScreen(),

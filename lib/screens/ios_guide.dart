@@ -15,39 +15,77 @@ class _IosGuideState extends State<IosGuide> {
         image: 'assets/apple/ios1.png',
         step: 1,
         text:
-            'A QR code will be delivered to you via email for activation. To learn how to access your QR code scanner and add your new line, follow these steps:'),
+            "Talk to your Team of Experts to set up your postpaid plan. You will need to provide your device EID to the Expert to update your account. A QR code is only needed if the auto-discovery notification is not received and will be delivered to you via email for activation. To learn how to access your QR code scanner and add your new line, follow these steps:"),
     Guide(
         image: 'assets/apple/ios2.gif',
         step: 2,
-        text: 'Go to the Home screen. Choose Settings.'),
+        text: "Go to the Home screen. Choose Settings."),
     Guide(
         image: 'assets/apple/ios3.gif',
         step: 3,
-        text: 'scroll down and choose celluar'),
-    Guide(image: 'assets/apple/ios4.gif', step: 4, text: 'add celluar plan'),
+        text: "Scroll down. Choose Cellular."),
+    Guide(
+        image: 'assets/apple/ios4.gif',
+        step: 4,
+        text: "Choose Add Cellular Plan."),
     Guide(
         image: 'assets/apple/ios5.png',
         step: 5,
-        text: 'scan qr code via email'),
-    Guide(image: 'assets/apple/ios6.gif', step: 6, text: 'choose continue'),
-    Guide(image: 'assets/apple/ios7.gif', step: 7, text: 'choose continue'),
+        text:
+            "Scan the QR code sent to you via email by your Team of Experts."),
+    Guide(
+        image: 'assets/apple/ios6.gif',
+        step: 6,
+        text: "Choose Add Cellular Plan."),
+    Guide(image: 'assets/apple/ios7.gif', step: 7, text: "Choose Continue."),
     Guide(
         image: 'assets/apple/ios8.gif',
         step: 8,
-        text: 'turn on allow cellular data'),
+        text: "Choose an option, in this case, Secondary."),
+    Guide(image: 'assets/apple/ios9.gif', step: 9, text: "Choose Continue."),
     Guide(
-        image: 'assets/apple/ios9.gif', step: 9, text: 'turn on data roaming'),
-    Guide(image: 'assets/apple/ios10.gif', step: 10, text: 'go to home screen'),
-    Guide(image: 'assets/apple/ios11.gif', step: 11, text: 'go to home screen'),
-    Guide(image: 'assets/apple/ios12.gif', step: 12, text: 'go to home screen'),
-    Guide(image: 'assets/apple/ios13.gif', step: 13, text: 'go to home screen'),
-    Guide(image: 'assets/apple/ios14.png', step: 14, text: 'go to home screen'),
-    Guide(image: 'assets/apple/ios15.png', step: 15, text: 'go to home screen'),
-    Guide(image: 'assets/apple/ios16.gif', step: 16, text: 'go to home screen'),
-    Guide(image: 'assets/apple/ios17.gif', step: 17, text: 'go to home screen'),
-    Guide(image: 'assets/apple/ios18.gif', step: 18, text: 'go to home screen'),
-    Guide(image: 'assets/apple/ios19.gif', step: 19, text: 'go to home screen'),
-    Guide(image: 'assets/apple/ios20.gif', step: 20, text: 'go to home screen'),
+        image: 'assets/apple/ios10.gif',
+        step: 10,
+        text: "Choose an option, in this case, Secondary."),
+    Guide(image: 'assets/apple/ios11.gif', step: 11, text: "Choose Continue."),
+    Guide(
+        image: 'assets/apple/ios12.gif',
+        step: 12,
+        text: "Choose an option, in this case, Secondary."),
+    Guide(
+        image: 'assets/apple/ios13.gif',
+        step: 13,
+        text: "Optional: Turn on Allow Cellular Data Switching. Choose Done."),
+    Guide(
+        image: 'assets/apple/ios14.png',
+        step: 14,
+        text:
+            "You have scanned your QR code and added your postpaid plan. Return to the Home screen."),
+    Guide(
+        image: 'assets/apple/ios15.png',
+        step: 15,
+        text:
+            "Your phone and apps may use data when you are not aware of it. You are responsible for any data charges on other wireless networks. To turn off data roaming when you are not on the network, follow these steps:"),
+    Guide(
+        image: 'assets/apple/ios16.gif',
+        step: 16,
+        text: "Go to the Home screen. Choose Settings."),
+    Guide(
+        image: 'assets/apple/ios17.gif',
+        step: 17,
+        text: "Scroll down. Choose Cellular."),
+    Guide(
+        image: 'assets/apple/ios18.gif',
+        step: 18,
+        text: "Choose Cellular Data Options."),
+    Guide(
+        image: 'assets/apple/ios19.gif',
+        step: 19,
+        text: "Turn on Data Roaming."),
+    Guide(
+        image: 'assets/apple/ios20.gif',
+        step: 20,
+        text: "Data roaming has been turned on. Return to the Home screen."),
   ];
   int index = 0;
 

@@ -6,6 +6,7 @@ import 'package:mobi_esim/screens/ios_guide.dart';
 import 'package:mobi_esim/screens/navbar/profilepages/contactus.dart';
 import 'package:mobi_esim/screens/navbar/profilepages/deleteacc.dart';
 import 'package:mobi_esim/screens/navbar/profilepages/my_wallet.dart';
+import 'package:mobi_esim/screens/navbar/profilepages/myesim.dart';
 import 'package:mobi_esim/screens/navbar/profilepages/term.dart';
 import 'package:mobi_esim/screens/navbar/profilepages/userguide.dart';
 import 'package:mobi_esim/screens/notification.dart';
@@ -56,7 +57,8 @@ class _RootState extends State<Root> {
         '/userguide': (context) => UserGuide(),
         '/iosguide': (context) => IosGuide(),
         '/andguide': (context) => AndGuide(),
-        '/fromgallery': (context) => FromGallery()
+        '/fromgallery': (context) => FromGallery(),
+        '/myesim': (context) => MyEsim()
       },
     );
   }

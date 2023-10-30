@@ -38,6 +38,12 @@ class _ProfilePageState extends State<ProfilePage> {
               height: 10,
             ),
             GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/myesim');
+                },
+                child:
+                    ProfileMenu(geticon: Icons.sim_card, heading: 'My eSIM')),
+            GestureDetector(
               onTap: () {
                 Navigator.pushNamed(context, '/signup');
               },

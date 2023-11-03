@@ -9,7 +9,13 @@ class Global extends StatelessWidget {
     return SafeArea(
         child: Scaffold(
       body: ListView(
-        children: [GlobalContainer(), GlobalContainer()],
+        children: [
+          GlobalContainer(),
+          GlobalContainer(),
+          SizedBox(
+            height: 20,
+          )
+        ],
       ),
     ));
   }

@@ -22,11 +22,11 @@ class _FailedSigninState extends State<FailedSignin> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                height: 0.2 * height,
+                height: 0.3 * height,
               ),
               Center(
                   child: Container(
-                height: 0.3 * height,
+                height: 0.25 * height,
                 width: 0.8 * width,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -70,7 +70,7 @@ class _FailedSigninState extends State<FailedSignin> {
                   Navigator.pushNamed(context, '/welcome');
                 },
                 child: Container(
-                  height: 0.08 * height,
+                  height: 0.06 * height,
                   width: 0.8 * width,
                   decoration: BoxDecoration(
                       color: Colors.blue,

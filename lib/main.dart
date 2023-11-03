@@ -9,6 +9,7 @@ import 'package:mobi_esim/screens/navbar/profilepages/my_wallet.dart';
 import 'package:mobi_esim/screens/navbar/profilepages/myesim.dart';
 import 'package:mobi_esim/screens/navbar/profilepages/term.dart';
 import 'package:mobi_esim/screens/navbar/profilepages/userguide.dart';
+import 'package:mobi_esim/screens/navigate.dart';
 import 'package:mobi_esim/screens/notification.dart';
 import 'package:mobi_esim/screens/qr.dart';
 import 'package:mobi_esim/screens/signup/failed_sign_in.dart';
@@ -39,13 +40,14 @@ class _RootState extends State<Root> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/signup',
+      initialRoute: '/navigate',
       routes: {
         '/signup': (context) => Signup(),
         '/term': (context) => TcScreen(),
         '/verify': (context) => Verify(),
         '/welcome': (context) => Welcome(),
         '/country': (context) => CountryBundle(),
+        '/navigate': (context) => Navigate(),
         '/faq': (context) => Faq(),
         '/failed': (context) => FailedSignin(),
         '/contactus': (context) => ContactUs(),

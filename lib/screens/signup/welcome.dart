@@ -10,7 +10,7 @@ class Welcome extends StatefulWidget {
 
 class _WelcomeState extends State<Welcome> {
   void screenchanger(BuildContext context) async {
-    await Future.delayed(Duration(seconds: 4));
+    await Future.delayed(Duration(seconds: 3));
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => Navigate()));
   }
@@ -32,7 +32,7 @@ class _WelcomeState extends State<Welcome> {
         color: Color(0xff8019191c),
         child: Center(
             child: Container(
-          height: 0.3 * height,
+          height: 0.2 * height,
           width: 0.7 * width,
           decoration: BoxDecoration(
             color: Colors.white,

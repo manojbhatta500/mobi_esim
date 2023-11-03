@@ -137,8 +137,8 @@ class Verify extends StatelessWidget {
               ),
             ),
             Container(
-              margin:
-                  EdgeInsets.symmetric(horizontal: 0.2 * width, vertical: 10),
+              margin: EdgeInsets.symmetric(
+                  horizontal: 0.1 * width, vertical: 0.04 * height),
               child: Row(
                 children: [
                   Text("Didn’t receive a code? ",
@@ -150,7 +150,7 @@ class Verify extends StatelessWidget {
             ),
             Container(
               margin:
-                  EdgeInsets.symmetric(horizontal: 0.3 * width, vertical: 2),
+                  EdgeInsets.symmetric(horizontal: 0.3 * width, vertical: 10),
               child: Row(
                 children: [
                   Text("Time Remaining ",

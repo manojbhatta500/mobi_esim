@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobi_esim/screens/and_guide.dart';
 import 'package:mobi_esim/screens/androidguide/fromgallery.dart';
+
 import 'package:mobi_esim/screens/ios_guide.dart';
 
 import 'package:mobi_esim/screens/navbar/profilepages/contactus.dart';
@@ -60,7 +61,7 @@ class _RootState extends State<Root> {
         '/iosguide': (context) => IosGuide(),
         '/andguide': (context) => AndGuide(),
         '/fromgallery': (context) => FromGallery(),
-        '/myesim': (context) => MyEsim()
+        '/myesim': (context) => MyEsim(),
       },
     );
   }

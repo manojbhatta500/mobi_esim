@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobi_esim/customwiget/logbutton.dart';
 import 'package:mobi_esim/screens/navbar/countrybundles/tabpages/global.dart';
 
 import 'package:mobi_esim/screens/navbar/countrybundles/tabpages/countrylist.dart';
@@ -51,14 +52,7 @@ class _CountryBundleState extends State<CountryBundle>
                       "Let's Explore!",
                       style: TextStyle(fontSize: 20, color: Color(0xff3b57a6)),
                     ),
-                    IconButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/notifications');
-                        },
-                        icon: Icon(
-                          Icons.notifications,
-                          color: Color(0xff3b57a6),
-                        ))
+                    LogButton()
                   ],
                 ),
               ),
@@ -95,7 +89,7 @@ class _CountryBundleState extends State<CountryBundle>
                           padding: EdgeInsets.all(5),
                           decoration: BoxDecoration(
                               color: Color(0xff2941b8ea),
-                              borderRadius: BorderRadius.circular(25)),
+                              borderRadius: BorderRadius.circular(10)),
                           child: Tab(
                             child: Padding(
                               padding: const EdgeInsets.all(3.0),
@@ -112,7 +106,7 @@ class _CountryBundleState extends State<CountryBundle>
                           padding: EdgeInsets.all(5),
                           decoration: BoxDecoration(
                               color: Color(0xff2941b8ea),
-                              borderRadius: BorderRadius.circular(25)),
+                              borderRadius: BorderRadius.circular(10)),
                           child: Tab(
                             child: Padding(
                               padding: const EdgeInsets.all(3.0),
@@ -129,7 +123,7 @@ class _CountryBundleState extends State<CountryBundle>
                           padding: EdgeInsets.all(5),
                           decoration: BoxDecoration(
                               color: Color(0xff2941b8ea),
-                              borderRadius: BorderRadius.circular(25)),
+                              borderRadius: BorderRadius.circular(10)),
                           child: Tab(
                             child: Padding(
                               padding: const EdgeInsets.all(3.0),

@@ -10,7 +10,7 @@ class TopContainer extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Container(
-        height: 0.2 * height,
+        height: 0.25 * height,
         width: 0.9 * width,
         margin: EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),

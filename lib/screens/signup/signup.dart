@@ -23,10 +23,6 @@ class _SignupState extends State<Signup> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [Icon(Icons.close)],
-            ),
             SizedBox(
               height: 0.03 * height,
             ),

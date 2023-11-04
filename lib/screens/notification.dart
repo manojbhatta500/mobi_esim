@@ -16,39 +16,43 @@ class _NotificationsState extends State<Notifications> {
     double height = MediaQuery.of(context).size.height;
     return SafeArea(
         child: Scaffold(
-            body: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Text(
-              'Notifications',
-              style: TextStyle(fontSize: 20, color: Color(0xff3b57a6)),
+            appBar: AppBar(
+              elevation: 0,
+              backgroundColor: Colors.white,
+              automaticallyImplyLeading: false,
+              actions: [
+                IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(
+                      Icons.close,
+                      color: Color(0xff3b57a6),
+                    )),
+              ],
+              title: Center(
+                child: Text(
+                  'Notifications',
+                  style: TextStyle(fontSize: 20, color: Color(0xff3b57a6)),
+                ),
+              ),
             ),
-            SizedBox(
-              width: 0.20 * width,
-            ),
-            IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: Icon(
-                  Icons.close,
-                  color: Color(0xff3b57a6),
-                )),
-          ],
-        ),
-        SizedBox(
-          height: 0.4 * height,
-        ),
-        Center(
-          child: Text(
-            'You do not have any notifications yet',
-            style: minihead,
-          ),
-        )
-      ],
-    )));
+            body: Container(
+              color: Colors.white,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 0.4 * height,
+                  ),
+                  Center(
+                    child: Text(
+                      'You do not have any notifications yet',
+                      style: minihead,
+                    ),
+                  )
+                ],
+              ),
+            )));
   }
 }

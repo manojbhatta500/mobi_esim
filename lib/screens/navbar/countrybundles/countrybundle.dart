@@ -48,7 +48,7 @@ class _CountryBundleState extends State<CountryBundle>
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Let’s Explore!",
+                      "Let's Explore!",
                       style: TextStyle(fontSize: 20, color: Color(0xff3b57a6)),
                     ),
                     IconButton(

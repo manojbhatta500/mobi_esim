@@ -33,9 +33,10 @@ class _SignupState extends State<Signup> {
             Container(
                 height: 0.3 * height,
                 width: width,
-                child: Image(image: AssetImage('assets/logo.jpg'))),
+                margin: EdgeInsets.symmetric(horizontal: 0.2 * width),
+                child: Image(image: AssetImage('assets/real.png'))),
             SizedBox(
-              height: 0.03 * height,
+              height: 0.07 * height,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

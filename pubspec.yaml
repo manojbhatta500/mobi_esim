@@ -72,6 +72,7 @@ flutter:
     - assets/and/
     - assets/apple/
     - assets/per.png
+    - assets/real.png
   
 
   # An image asset can refer to one or more resolution-specific "variants", see

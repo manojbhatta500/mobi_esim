@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:country_flags/country_flags.dart';
 import 'package:mobi_esim/customwiget/countrydetails.dart';
@@ -35,27 +36,30 @@ class CountryItem extends StatelessWidget {
       },
       child: Container(
         padding: EdgeInsets.all(5),
-        height: 50,
+        height: 70,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(15),
           color: Color(0xff2941b8ea),
         ),
         margin: EdgeInsets.all(15),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              countryNames[countryCode] ?? 'unknown name',
-              style: TextStyle(
-                fontSize: 20,
-              ),
+            Row(
+              children: [
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 10),
+                  child: CountryFlag.fromCountryCode(countryCode, width: 40),
+                ),
+                Text(
+                  countryNames[countryCode] ?? 'unknown name',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+                ),
+              ],
             ),
-            CircleAvatar(
-              radius: 20,
-              backgroundColor:
-                  Colors.white, // Background color of the CircleAvatar
-              child: CountryFlag.fromCountryCode(countryCode,
-                  width: 25), // Set the width to fit within CircleAvatar
+            Icon(
+              CupertinoIcons.forward,
+              size: 25,
             ),
           ],
         ),

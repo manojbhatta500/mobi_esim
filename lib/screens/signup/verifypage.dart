@@ -29,16 +29,19 @@ class Verify extends StatelessWidget {
                 SizedBox(
                   width: 0.2 * width,
                 ),
-                Text(
-                  'Verification Code',
-                  style: TextStyle(fontSize: 20, color: Color(0xff3b57a6)),
+                Center(
+                  child: Text(
+                    'Verification Code',
+                    style: TextStyle(fontSize: 20, color: Color(0xff3b57a6)),
+                  ),
                 )
               ],
             ),
             Container(
-              height: 0.3 * height,
-              child: Image.asset('assets/logo.jpg'),
-            ),
+                height: 0.3 * height,
+                width: width,
+                margin: EdgeInsets.symmetric(horizontal: 0.2 * width),
+                child: Image(image: AssetImage('assets/real.png'))),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -138,7 +141,7 @@ class Verify extends StatelessWidget {
             ),
             Container(
               margin: EdgeInsets.symmetric(
-                  horizontal: 0.1 * width, vertical: 0.04 * height),
+                  horizontal: 0.15 * width, vertical: 0.04 * height),
               child: Row(
                 children: [
                   Text("Didn’t receive a code? ",

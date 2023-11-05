@@ -4,15 +4,23 @@ import 'package:country_flags/country_flags.dart';
 import 'package:mobi_esim/customwiget/countrydetails.dart';
 
 class CountryList extends StatelessWidget {
-  const CountryList({super.key});
+  final String searchQuery;
+
+  CountryList({required this.searchQuery, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: _countryCodes.length,
-      itemBuilder: (BuildContext context, int index) {
-        final countryCode = _countryCodes[index];
+    final filteredCountries = searchQuery.isEmpty
+        ? _countryCodes
+        : _countryCodes.where((countryCode) {
+            final countryName = countryNames[countryCode]!.toLowerCase();
+            return countryName.contains(searchQuery.toLowerCase());
+          }).toList();
 
+    return ListView.builder(
+      itemCount: filteredCountries.length,
+      itemBuilder: (BuildContext context, int index) {
+        final countryCode = filteredCountries[index];
         return CountryItem(countryCode: countryCode);
       },
     );

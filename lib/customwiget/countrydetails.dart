@@ -1,11 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:mobi_esim/customwiget/checkcountry.dart';
-import 'package:mobi_esim/customwiget/plandetails.dart';
 
-class CountryDetails extends StatelessWidget {
+import 'package:mobi_esim/customwiget/data.dart';
+import 'package:mobi_esim/customwiget/fullplan.dart';
+
+class CountryDetails extends StatefulWidget {
   final String countrycode;
 
   CountryDetails({required this.countrycode});
+
+  @override
+  State<CountryDetails> createState() => _CountryDetailsState();
+}
+
+class _CountryDetailsState extends State<CountryDetails>
+    with SingleTickerProviderStateMixin {
+  late TabController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = TabController(length: 2, vsync: this);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +47,7 @@ class CountryDetails extends StatelessWidget {
                   width: 0.2 * width,
                 ),
                 Text(
-                  '${countryNames[countrycode]}',
+                  '${countryNames[widget.countrycode]}',
                   style: TextStyle(fontSize: 20, color: Color(0xff3b57a6)),
                 )
               ],
@@ -40,81 +55,61 @@ class CountryDetails extends StatelessWidget {
             SizedBox(
               height: 0.02 * height,
             ),
-            GestureDetector(
-              onTap: () {
-                showModalBottomSheet(
-                  context: context,
-                  builder: (context) {
-                    return CheckCountry(countrycode: countrycode);
-                  },
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
-                    ),
-                  ),
-                  isScrollControlled: true,
-                ).then((value) {
-                  print('dismissed bottom modal sheet');
-                });
-              },
-              child: PlanDetails(
-                countrycode: countrycode,
-                validity: '2',
-                data: '7',
-                covrage: countrycode,
-                checker: true,
+            Container(
+              height: 0.08 * height,
+              width: width,
+              child: Center(
+                child: TabBar(
+                    controller: controller,
+                    isScrollable: true,
+                    indicator: null,
+                    tabs: [
+                      Container(
+                        height: 0.06 * height,
+                        width: 0.4 * width,
+                        padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                            color: Color(0xff2941b8ea),
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Tab(
+                          child: Padding(
+                            padding: const EdgeInsets.all(3.0),
+                            child: Text(
+                              'Data',
+                              style: TextStyle(color: Color(0xff41b8ea)),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: 0.06 * height,
+                        width: 0.4 * width,
+                        padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                            color: Color(0xff2941b8ea),
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Tab(
+                          child: Padding(
+                            padding: const EdgeInsets.all(3.0),
+                            child: Text(
+                              'Data/calls/Text',
+                              style: TextStyle(color: Color(0xff41b8ea)),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ]),
               ),
             ),
-            GestureDetector(
-              onTap: () {
-                showModalBottomSheet(
-                  context: context,
-                  builder: (context) {
-                    return CheckCountry(countrycode: countrycode);
-                  },
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
-                    ),
-                  ),
-                  isScrollControlled: true,
-                ).then((value) {
-                  print('dismissed bottom modal sheet');
-                });
-              },
-              child: PlanDetails(
-                  countrycode: countrycode,
-                  validity: '10',
-                  checker: true,
-                  data: '15',
-                  covrage: countrycode),
-            ),
-            GestureDetector(
-              onTap: () {
-                showModalBottomSheet(
-                  context: context,
-                  builder: (context) {
-                    return CheckCountry(countrycode: countrycode);
-                  },
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
-                    ),
-                  ),
-                  isScrollControlled: true,
-                ).then((value) {
-                  print('dismissed bottom modal sheet');
-                });
-              },
-              child: PlanDetails(
-                  countrycode: countrycode,
-                  validity: '30',
-                  checker: true,
-                  data: '30',
-                  covrage: countrycode),
+            Container(
+              height: 0.8 * height,
+              width: double.infinity,
+              child: TabBarView(controller: controller, children: [
+                Data(countrycode: widget.countrycode),
+                FullPlan(
+                  countrycode: widget.countrycode,
+                ),
+              ]),
             ),
           ],
         ),

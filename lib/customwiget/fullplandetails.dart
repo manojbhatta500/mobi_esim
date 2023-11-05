@@ -1,19 +1,25 @@
 import 'package:country_flags/country_flags.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mobi_esim/customwiget/checkcountry.dart';
+import 'package:mobi_esim/customwiget/countrydetails.dart';
+import 'package:mobi_esim/customwiget/plandetails.dart';
 
-class PlanDetails extends StatelessWidget {
+class FullPlanDetails extends StatelessWidget {
   final String validity;
   final String data;
   final String covrage;
   final String countrycode;
-  final bool checker;
-  PlanDetails(
+  final String minutes;
+  final String texts;
+
+  FullPlanDetails(
       {required this.countrycode,
       required this.validity,
       required this.data,
       required this.covrage,
-      required this.checker});
+      required this.minutes,
+      required this.texts});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +27,7 @@ class PlanDetails extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
 
     return Container(
-      height: 0.4 * height,
+      height: 0.5 * height,
       width: 0.9 * width,
       margin: EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
@@ -70,18 +76,39 @@ class PlanDetails extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(CupertinoIcons.tree),
+                  Icon(Icons.call),
                   SizedBox(
                     width: 5,
                   ),
                   Text(
-                    'Coverage',
+                    'calls',
                     style: TextStyle(color: Color(0xff464343), fontSize: 14),
                   ),
                 ],
               ),
               Text(
-                '$covrage',
+                '$minutes mins',
+                style: TextStyle(color: Color(0xff39393c), fontSize: 14),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Icon(Icons.message),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    'Texts',
+                    style: TextStyle(color: Color(0xff464343), fontSize: 14),
+                  ),
+                ],
+              ),
+              Text(
+                '$texts Sms',
                 style: TextStyle(color: Color(0xff39393c), fontSize: 14),
               ),
             ],
@@ -107,30 +134,48 @@ class PlanDetails extends StatelessWidget {
               ),
             ],
           ),
-          checker ? FixContainer() : Container()
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Icon(CupertinoIcons.tree),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    'Coverage',
+                    style: TextStyle(color: Color(0xff464343), fontSize: 14),
+                  ),
+                ],
+              ),
+              Text(
+                '${countryNames[countrycode]!}',
+                style: TextStyle(color: Color(0xff39393c), fontSize: 14),
+              ),
+            ],
+          ),
+          GestureDetector(
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    return CheckCountry(countrycode: countrycode);
+                  },
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                    ),
+                  ),
+                  isScrollControlled: true,
+                ).then((value) {
+                  print('dismissed bottom modal sheet');
+                });
+              },
+              child: FixContainer())
         ],
       ),
-    );
-  }
-}
-
-class FixContainer extends StatelessWidget {
-  const FixContainer({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-    return Container(
-      width: 0.8 * width,
-      height: 0.06 * height,
-      decoration: BoxDecoration(
-          color: Color(0xff3b57a6), borderRadius: BorderRadius.circular(20)),
-      child: Center(
-          child: Text(
-        '\$5.50 Buy Now',
-        style: TextStyle(color: Colors.white, fontSize: 20),
-      )),
     );
   }
 }

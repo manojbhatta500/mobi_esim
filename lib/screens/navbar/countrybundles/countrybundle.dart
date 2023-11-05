@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobi_esim/customwiget/logbutton.dart';
+
 import 'package:mobi_esim/screens/navbar/countrybundles/tabpages/global.dart';
 
 import 'package:mobi_esim/screens/navbar/countrybundles/tabpages/countrylist.dart';
@@ -15,11 +16,20 @@ class CountryBundle extends StatefulWidget {
 class _CountryBundleState extends State<CountryBundle>
     with SingleTickerProviderStateMixin {
   late TabController controller;
+  TextEditingController inputcountry = TextEditingController();
+
+  String currentSearch = '';
 
   @override
   void initState() {
     super.initState();
     controller = TabController(length: 3, vsync: this);
+  }
+
+  void updateSearchResults(String query) {
+    setState(() {
+      currentSearch = query;
+    });
   }
 
   @override
@@ -64,6 +74,8 @@ class _CountryBundleState extends State<CountryBundle>
                 width: 0.9 * width,
                 margin: EdgeInsets.only(left: 10),
                 child: TextField(
+                  controller: inputcountry,
+                  onChanged: updateSearchResults,
                   decoration: InputDecoration(
                       filled: true,
                       fillColor: Color(0xffF4F4F4),
@@ -140,9 +152,11 @@ class _CountryBundleState extends State<CountryBundle>
               Container(
                 height: 0.7 * height,
                 width: double.infinity,
-                child: TabBarView(
-                    controller: controller,
-                    children: [CountryList(), Regions(), Global()]),
+                child: TabBarView(controller: controller, children: [
+                  CountryList(searchQuery: currentSearch),
+                  Regions(),
+                  Global()
+                ]),
               )
             ],
           ),

@@ -13,7 +13,7 @@ class PlanContainer extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.height;
     return Container(
-      height: 0.22 * height,
+      height: 0.28 * height,
       width: width,
       margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       decoration: BoxDecoration(

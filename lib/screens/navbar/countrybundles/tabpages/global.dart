@@ -35,8 +35,8 @@ class _GlobalContainerState extends State<GlobalContainer> {
     double height = MediaQuery.of(context).size.height;
 
     return Container(
-      height: 0.4 * height,
-      width: 0.7 * width,
+      height: 0.3 * height,
+      width: 0.6 * width,
       margin: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
       decoration: BoxDecoration(
@@ -52,7 +52,7 @@ class _GlobalContainerState extends State<GlobalContainer> {
                 style: TextStyle(color: Color(0xff0082d8), fontSize: 15),
               ),
               Container(
-                  height: 0.1 * height,
+                  height: 0.06 * height,
                   child: Image(image: AssetImage('assets/global.png')))
             ],
           ),

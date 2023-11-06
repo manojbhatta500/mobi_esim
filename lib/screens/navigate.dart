@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobi_esim/screens/navbar/countrybundles/countrybundle.dart';
+import 'package:mobi_esim/screens/navbar/profilepages/myesim.dart';
 import 'package:mobi_esim/screens/navbar/profilepages/profilepage.dart';
 
 class Navigate extends StatefulWidget {
@@ -14,6 +15,7 @@ class _NavigateState extends State<Navigate> {
 
   final List<Widget> _pages = [
     CountryBundle(),
+    MyEsim(),
     ProfilePage(),
   ];
 
@@ -33,6 +35,10 @@ class _NavigateState extends State<Navigate> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.sim_card),
+            label: 'My Esim',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

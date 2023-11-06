@@ -51,7 +51,7 @@ class _FaqState extends State<Faq> {
                     filled: true,
                     fillColor: Color(0xffF4F4F4),
                     prefixIcon: Icon(Icons.search),
-                    hintText: 'Search Countries Region',
+                    hintText: 'Search ',
                     contentPadding: EdgeInsets.symmetric(vertical: 6),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20))),

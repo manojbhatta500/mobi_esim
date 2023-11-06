@@ -21,7 +21,7 @@ class _CheckCountryState extends State<CheckCountry> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Container(
-      height: 0.8 * height,
+      height: 0.6 * height,
       width: width,
       child: SingleChildScrollView(
         child: Column(
@@ -45,7 +45,7 @@ class _CheckCountryState extends State<CheckCountry> {
               covrage: widget.countrycode,
               checker: false,
             ),
-            Container(
+            /* Container(
                 margin: EdgeInsets.only(left: 20),
                 child: Text(
                   'Email Address',
@@ -61,7 +61,7 @@ class _CheckCountryState extends State<CheckCountry> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20))),
               ),
-            ),
+            ),*/
             SizedBox(
               height: 20,
             ),

@@ -33,22 +33,17 @@ class _MyEsimState extends State<MyEsim> with SingleTickerProviderStateMixin {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Icon(
-                      Icons.arrow_back_ios,
-                      color: Color(0xff3b57a6),
-                    )),
                 SizedBox(
-                  width: 0.25 * width,
+                  width: 0.4 * width,
                 ),
                 Text(
                   'My eSIM',
                   style: TextStyle(fontSize: 20, color: Color(0xff3b57a6)),
                 )
               ],
+            ),
+            SizedBox(
+              height: 20,
             ),
             Container(
               height: 0.08 * height,

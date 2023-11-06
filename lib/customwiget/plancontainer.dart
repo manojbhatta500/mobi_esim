@@ -13,9 +13,9 @@ class PlanContainer extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.height;
     return Container(
-      height: 0.25 * height,
+      height: 0.22 * height,
       width: width,
-      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 30),
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       decoration: BoxDecoration(
           color: Color(0xfff0f1fe), borderRadius: BorderRadius.circular(10)),
       child: Column(
@@ -88,7 +88,7 @@ class PlanContainer extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 20,
+            height: 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -97,7 +97,7 @@ class PlanContainer extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.gas_meter,
-                    size: 50,
+                    size: 30,
                     color: Colors.blue,
                   ),
                   SizedBox(
@@ -114,7 +114,7 @@ class PlanContainer extends StatelessWidget {
                   Icon(
                     Icons
                         .signal_wifi_statusbar_connected_no_internet_4_outlined,
-                    size: 50,
+                    size: 30,
                     color: Colors.blue,
                   ),
                   SizedBox(
@@ -130,7 +130,7 @@ class PlanContainer extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.qr_code,
-                    size: 50,
+                    size: 30,
                     color: Colors.blue,
                   ),
                   SizedBox(

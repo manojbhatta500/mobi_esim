@@ -17,12 +17,14 @@ class CountryList extends StatelessWidget {
             return countryName.contains(searchQuery.toLowerCase());
           }).toList();
 
-    return ListView.builder(
-      itemCount: filteredCountries.length,
-      itemBuilder: (BuildContext context, int index) {
-        final countryCode = filteredCountries[index];
-        return CountryItem(countryCode: countryCode);
-      },
+    return Scaffold(
+      body: ListView.builder(
+        itemCount: filteredCountries.length,
+        itemBuilder: (BuildContext context, int index) {
+          final countryCode = filteredCountries[index];
+          return CountryItem(countryCode: countryCode);
+        },
+      ),
     );
   }
 }
@@ -43,13 +45,13 @@ class CountryItem extends StatelessWidget {
         }));
       },
       child: Container(
-        padding: EdgeInsets.all(5),
-        height: 70,
+        padding: EdgeInsets.all(2),
+        height: 60,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           color: Color(0xff2941b8ea),
         ),
-        margin: EdgeInsets.all(15),
+        margin: EdgeInsets.all(13),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

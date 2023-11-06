@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class RegContainer extends StatelessWidget {
   late String countryname;
-  RegContainer({required this.countryname});
+  late String image;
+  RegContainer({required this.countryname, required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class RegContainer extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Image(image: AssetImage('assets/global.png')),
+          Image(image: AssetImage('$image')),
           Text(
             '$countryname',
             style: TextStyle(color: Color(0xff343434), fontSize: 18),

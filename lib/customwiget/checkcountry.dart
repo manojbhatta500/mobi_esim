@@ -21,7 +21,7 @@ class _CheckCountryState extends State<CheckCountry> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Container(
-      height: 0.6 * height,
+      height: 0.4 * height,
       width: width,
       child: SingleChildScrollView(
         child: Column(
@@ -62,54 +62,7 @@ class _CheckCountryState extends State<CheckCountry> {
                         borderRadius: BorderRadius.circular(20))),
               ),
             ),*/
-            SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20),
-              child: Text(
-                'Enter Promo Code if available',
-                style: minihead,
-              ),
-            ),
-            Container(
-              height: 0.07 * height,
-              width: 0.9 * width,
-              margin: EdgeInsets.only(left: 20),
-              child: TextField(
-                decoration: InputDecoration(
-                    hintText: 'Enter Promo Code here ',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20))),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 20),
-                  child: Checkbox(
-                      value: checkboxbool,
-                      onChanged: (value) {
-                        setState(() {
-                          checkboxbool = value!;
-                          if (checkboxbool == true) {
-                            buttoncolor =
-                                const Color.fromARGB(255, 10, 99, 172);
-                          } else {
-                            buttoncolor = Colors.grey;
-                          }
-                        });
-                      }),
-                ),
-                Expanded(
-                    child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                      """I accept the Terms & Conditions and I understand that the product only work with eSIM compatible and carrier-unlocked devices."""),
-                ))
-              ],
-            ),
+
             GestureDetector(
               onTap: () {
                 showModalBottomSheet(

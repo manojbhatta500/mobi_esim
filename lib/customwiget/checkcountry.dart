@@ -21,7 +21,7 @@ class _CheckCountryState extends State<CheckCountry> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Container(
-      height: 0.4 * height,
+      height: 0.45 * height,
       width: width,
       child: SingleChildScrollView(
         child: Column(

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobi_esim/customwiget/faqcontainer.dart';
 
 class Faq extends StatefulWidget {
   const Faq({super.key});
@@ -60,11 +59,68 @@ class _FaqState extends State<Faq> {
             SizedBox(
               height: 10,
             ),
-            FaqContainer(text: 'When will I receive my e-SIM?'),
-            FaqContainer(text: 'How do I install my e-SIM?'),
-            FaqContainer(text: 'Can I use WhatsApp?'),
-            FaqContainer(text: 'My e-SIM is not connecting?'),
-            FaqContainer(text: 'Can I call & send sms via my e-SIM?'),
+            Container(
+              margin: EdgeInsets.all(5),
+              child: ExpansionTile(
+                title: Text('When will I receive my e-SIM?'),
+                children: [
+                  Text(
+                      'Call or text your current provider to request a mobile PAC code. A PAC code should begiven to you immediately over the phone orwithin two hours by text')
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              margin: EdgeInsets.all(5),
+              child: ExpansionTile(
+                title: Text('How do I install my e-SIM?'),
+                children: [
+                  Text(
+                      'Call or text your current provider to request a mobile PAC code. A PAC code should begiven to you immediately over the phone orwithin two hours by text')
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              margin: EdgeInsets.all(5),
+              child: ExpansionTile(
+                title: Text('Can I use WhatsApp?'),
+                children: [
+                  Text(
+                      'Call or text your current provider to request a mobile PAC code. A PAC code should begiven to you immediately over the phone orwithin two hours by text')
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              margin: EdgeInsets.all(5),
+              child: ExpansionTile(
+                title: Text('My e-SIM is not connecting?'),
+                children: [
+                  Text(
+                      'Call or text your current provider to request a mobile PAC code. A PAC code should begiven to you immediately over the phone orwithin two hours by text')
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              margin: EdgeInsets.all(5),
+              child: ExpansionTile(
+                title: Text('Can I call & send sms via my e-SIM?'),
+                children: [
+                  Text(
+                      'Call or text your current provider to request a mobile PAC code. A PAC code should begiven to you immediately over the phone orwithin two hours by text')
+                ],
+              ),
+            ),
           ],
         ),
       ),

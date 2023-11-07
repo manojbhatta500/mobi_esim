@@ -28,6 +28,9 @@ class _ExpiredPlanState extends State<ExpiredPlan> {
           PlanContainer(
             continentname: 'Usa',
             countryname: 'north america',
+          ),
+          SizedBox(
+            height: 10,
           )
         ],
       )),

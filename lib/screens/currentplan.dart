@@ -23,6 +23,9 @@ class CurrentPlan extends StatelessWidget {
           PlanContainer(
             continentname: 'Usa',
             countryname: 'north america',
+          ),
+          SizedBox(
+            height: 10,
           )
         ],
       )),

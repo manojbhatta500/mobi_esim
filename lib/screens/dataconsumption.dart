@@ -18,7 +18,7 @@ class DataCunsumptions extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 10),
         child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Row(
@@ -31,7 +31,6 @@ class DataCunsumptions extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: Colors.black),
                   ),
-                  SizedBox(width: 0.01 * width),
                   TextButton(
                       onPressed: () {
                         print('printed cancel button');
@@ -44,7 +43,7 @@ class DataCunsumptions extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: 0.1 * height,
+                height: 2,
               ),
               Center(
                 child: Image(
@@ -67,15 +66,15 @@ class DataCunsumptions extends StatelessWidget {
                   style: TextStyle(color: Colors.black, fontSize: 20),
                 ),
               ),
-              SizedBox(
-                height: 0.01 * height,
-              ),
               Center(
                 child: Text(
                   '4.840 GB / 10 GB',
                   style: minihead,
                 ),
               ),
+              SizedBox(
+                height: 2,
+              )
             ]),
       ),
     );

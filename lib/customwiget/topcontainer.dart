@@ -17,6 +17,7 @@ class TopContainer extends StatelessWidget {
         decoration: BoxDecoration(
             color: Color(0xff0b1191), borderRadius: BorderRadius.circular(20)),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

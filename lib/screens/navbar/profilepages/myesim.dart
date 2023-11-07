@@ -92,7 +92,7 @@ class _MyEsimState extends State<MyEsim> with SingleTickerProviderStateMixin {
               ),
             ),
             Container(
-              height: 0.9 * height,
+              height: 0.75 * height,
               width: double.infinity,
               child: TabBarView(
                   controller: controller,

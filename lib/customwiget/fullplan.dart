@@ -36,6 +36,9 @@ class FullPlan extends StatelessWidget {
               minutes: '300',
               texts: '300',
             ),
+            SizedBox(
+              height: 20,
+            )
           ],
         ),
       ),

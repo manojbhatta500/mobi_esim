@@ -150,7 +150,7 @@ class _CountryBundleState extends State<CountryBundle>
                 ),
               ),
               Container(
-                height: 0.65 * height,
+                height: 0.62 * height,
                 width: double.infinity,
                 child: TabBarView(controller: controller, children: [
                   CountryList(searchQuery: currentSearch),

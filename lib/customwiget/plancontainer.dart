@@ -13,12 +13,13 @@ class PlanContainer extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.height;
     return Container(
-      height: 0.28 * height,
+      height: 0.2 * height,
       width: width,
       margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       decoration: BoxDecoration(
           color: Color(0xfff0f1fe), borderRadius: BorderRadius.circular(10)),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
             decoration: BoxDecoration(
@@ -87,9 +88,6 @@ class PlanContainer extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -97,11 +95,8 @@ class PlanContainer extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.gas_meter,
-                    size: 30,
+                    size: 25,
                     color: Colors.blue,
-                  ),
-                  SizedBox(
-                    height: 10,
                   ),
                   Text(
                     'Consumtions',
@@ -114,11 +109,8 @@ class PlanContainer extends StatelessWidget {
                   Icon(
                     Icons
                         .signal_wifi_statusbar_connected_no_internet_4_outlined,
-                    size: 30,
+                    size: 25,
                     color: Colors.blue,
-                  ),
-                  SizedBox(
-                    height: 10,
                   ),
                   Text(
                     'Top up',
@@ -130,7 +122,7 @@ class PlanContainer extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.qr_code,
-                    size: 30,
+                    size: 25,
                     color: Colors.blue,
                   ),
                   SizedBox(
@@ -143,6 +135,9 @@ class PlanContainer extends StatelessWidget {
                 ],
               )
             ],
+          ),
+          SizedBox(
+            height: 2,
           )
         ],
       ),

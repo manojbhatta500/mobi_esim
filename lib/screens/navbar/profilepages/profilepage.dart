@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobi_esim/customwiget/profile_menu.dart';
+import 'package:mobi_esim/screens/navbar/profilepages/term.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -63,12 +64,20 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: ProfileMenu(geticon: Icons.help, heading: 'FAQ')),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, '/tandc');
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return Term(get: true);
+                }));
               },
               child: ProfileMenu(
                   geticon: Icons.assignment, heading: 'Terms And Conditions'),
             ),
-            ProfileMenu(geticon: Icons.info, heading: 'About US'),
+            GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return Term(get: false);
+                  }));
+                },
+                child: ProfileMenu(geticon: Icons.info, heading: 'About US')),
             GestureDetector(
                 onTap: () {
                   Navigator.pushNamed(context, '/userguide');

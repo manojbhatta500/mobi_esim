@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Term extends StatelessWidget {
-  const Term({super.key});
+  Term({required this.get});
+
+  final bool get;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class Term extends StatelessWidget {
                   width: 0.20 * width,
                 ),
                 Text(
-                  'Terms & Conditions',
+                  get ? 'Terms & Conditions' : 'About us',
                   style: TextStyle(fontSize: 20, color: Color(0xff3b57a6)),
                 )
               ],

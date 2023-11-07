@@ -90,6 +90,9 @@ class Data extends StatelessWidget {
                   data: '30',
                   covrage: countryNames[countrycode]!),
             ),
+            SizedBox(
+              height: 20,
+            )
           ],
         ),
       ),

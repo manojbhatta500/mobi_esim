@@ -34,7 +34,7 @@ class FullPlanDetails extends StatelessWidget {
       decoration: BoxDecoration(
           color: Color(0xff2941b8ea), borderRadius: BorderRadius.circular(20)),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

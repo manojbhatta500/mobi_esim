@@ -52,7 +52,6 @@ class _RootState extends State<Root> {
         '/faq': (context) => Faq(),
         '/failed': (context) => FailedSignin(),
         '/contactus': (context) => ContactUs(),
-        '/tandc': (context) => Term(),
         '/delete': (context) => DeleteAcc(),
         '/qrcode': (context) => QrCode(),
         '/mywallet': (context) => MyWallet(),

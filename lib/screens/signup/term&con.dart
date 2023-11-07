@@ -89,7 +89,8 @@ You can maintain full control over your website or app by including a clause in 
             flex: 1,
             child: GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, '/verify');
+                print('printed cancel button');
+                Navigator.pop(context);
               },
               child: Center(
                 child: Container(

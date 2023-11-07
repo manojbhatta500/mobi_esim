@@ -29,17 +29,11 @@ class _SignupState extends State<Signup> {
                     Navigator.pop(context);
                   },
                   icon: Icon(Icons.close)),
-              SizedBox(
-                height: 0.03 * height,
-              ),
               Container(
                   height: 0.3 * height,
                   width: width,
                   margin: EdgeInsets.symmetric(horizontal: 0.2 * width),
                   child: Image(image: AssetImage('assets/real.png'))),
-              SizedBox(
-                height: 0.07 * height,
-              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -104,6 +98,21 @@ class _SignupState extends State<Signup> {
                             if (checkboxbool == true) {
                               buttoncolor =
                                   const Color.fromARGB(255, 10, 99, 172);
+                              showModalBottomSheet(
+                                context: context,
+                                builder: (context) {
+                                  return TcScreen();
+                                },
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20),
+                                    topRight: Radius.circular(20),
+                                  ),
+                                ),
+                                isScrollControlled: true,
+                              ).then((value) {
+                                print('dismissed bottom modal sheet');
+                              });
                             } else {
                               buttoncolor = Colors.grey;
                             }
@@ -120,30 +129,13 @@ class _SignupState extends State<Signup> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 0.05 * height,
-              ),
               GestureDetector(
                 onTap: () {
-                  setState(() {
-                    buttoncolor = const Color.fromARGB(255, 10, 99, 172);
-                  });
-
-                  showModalBottomSheet(
-                    context: context,
-                    builder: (context) {
-                      return TcScreen();
-                    },
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20),
-                      ),
-                    ),
-                    isScrollControlled: true,
-                  ).then((value) {
-                    print('dismissed bottom modal sheet');
-                  });
+                  if (checkboxbool == true) {
+                    Navigator.pushNamed(context, '/verify');
+                  } else {
+                    print('this is a demo');
+                  }
                 },
                 child: Center(
                   child: Container(

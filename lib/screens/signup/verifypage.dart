@@ -140,8 +140,8 @@ class Verify extends StatelessWidget {
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(
-                  horizontal: 0.15 * width, vertical: 0.04 * height),
+              margin:
+                  EdgeInsets.symmetric(horizontal: 0.15 * width, vertical: 5),
               child: Row(
                 children: [
                   Text("Didn’t receive a code? ",

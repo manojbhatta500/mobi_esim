@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobi_esim/customwiget/countrydetails.dart';
 
-import 'package:mobi_esim/customwiget/data.dart';
 import 'package:mobi_esim/customwiget/plandetails.dart';
 import 'package:mobi_esim/screens/redirect.dart';
 import 'package:carousel_slider/carousel_slider.dart';

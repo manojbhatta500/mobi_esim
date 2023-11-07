@@ -18,14 +18,19 @@ class CountryList extends StatelessWidget {
           }).toList();
 
     return Scaffold(
-      body: ListView.builder(
-        itemCount: filteredCountries.length,
-        itemBuilder: (BuildContext context, int index) {
+        body: ListView.builder(
+      itemCount: filteredCountries.length + 1,
+      itemBuilder: (BuildContext context, int index) {
+        if (index < filteredCountries.length) {
           final countryCode = filteredCountries[index];
           return CountryItem(countryCode: countryCode);
-        },
-      ),
-    );
+        } else {
+          return SizedBox(
+            height: 30,
+          );
+        }
+      },
+    ));
   }
 }
 

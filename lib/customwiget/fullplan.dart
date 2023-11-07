@@ -19,6 +19,7 @@ class FullPlan extends StatelessWidget {
               covrage: countrycode,
               minutes: '10',
               texts: '10',
+              checker: true,
             ),
             FullPlanDetails(
               countrycode: countrycode,
@@ -27,6 +28,7 @@ class FullPlan extends StatelessWidget {
               covrage: countrycode,
               minutes: '100',
               texts: '100',
+              checker: true,
             ),
             FullPlanDetails(
               countrycode: countrycode,
@@ -35,6 +37,7 @@ class FullPlan extends StatelessWidget {
               covrage: countrycode,
               minutes: '300',
               texts: '300',
+              checker: true,
             ),
             SizedBox(
               height: 20,

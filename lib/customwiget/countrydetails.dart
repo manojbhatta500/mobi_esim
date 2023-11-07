@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:mobi_esim/customwiget/data.dart';
 import 'package:mobi_esim/customwiget/fullplan.dart';
+import 'package:mobi_esim/screens/navigate.dart';
 
 class CountryDetails extends StatefulWidget {
   final String countrycode;
@@ -37,7 +38,10 @@ class _CountryDetailsState extends State<CountryDetails>
               children: [
                 IconButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return Navigate();
+                      }));
                     },
                     icon: Icon(
                       Icons.arrow_back_ios,

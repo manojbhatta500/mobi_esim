@@ -16,21 +16,10 @@ class Data extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                showModalBottomSheet(
-                  context: context,
-                  builder: (context) {
-                    return CheckCountry(countrycode: countrycode);
-                  },
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
-                    ),
-                  ),
-                  isScrollControlled: true,
-                ).then((value) {
-                  print('dismissed bottom modal sheet');
-                });
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return CheckCountry(
+                      countrycode: countrycode, data: '2', validity: '7');
+                }));
               },
               child: PlanDetails(
                 countrycode: countrycode,
@@ -42,21 +31,10 @@ class Data extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                showModalBottomSheet(
-                  context: context,
-                  builder: (context) {
-                    return CheckCountry(countrycode: countrycode);
-                  },
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
-                    ),
-                  ),
-                  isScrollControlled: true,
-                ).then((value) {
-                  print('dismissed bottom modal sheet');
-                });
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return CheckCountry(
+                      countrycode: countrycode, data: '15', validity: '15');
+                }));
               },
               child: PlanDetails(
                   countrycode: countrycode,
@@ -67,21 +45,10 @@ class Data extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                showModalBottomSheet(
-                  context: context,
-                  builder: (context) {
-                    return CheckCountry(countrycode: countrycode);
-                  },
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
-                    ),
-                  ),
-                  isScrollControlled: true,
-                ).then((value) {
-                  print('dismissed bottom modal sheet');
-                });
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return CheckCountry(
+                      countrycode: countrycode, data: '30', validity: '30');
+                }));
               },
               child: PlanDetails(
                   countrycode: countrycode,

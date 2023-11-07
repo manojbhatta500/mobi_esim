@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:mobi_esim/customwiget/checkcountry.dart';
 import 'package:mobi_esim/customwiget/countrydetails.dart';
 import 'package:mobi_esim/customwiget/plandetails.dart';
+import 'package:mobi_esim/screens/fullplan/fullbuy.dart';
 
 class FullPlanDetails extends StatelessWidget {
   final String validity;
@@ -12,6 +13,7 @@ class FullPlanDetails extends StatelessWidget {
   final String countrycode;
   final String minutes;
   final String texts;
+  final bool checker;
 
   FullPlanDetails(
       {required this.countrycode,
@@ -19,7 +21,8 @@ class FullPlanDetails extends StatelessWidget {
       required this.data,
       required this.covrage,
       required this.minutes,
-      required this.texts});
+      required this.texts,
+      required this.checker});
 
   @override
   Widget build(BuildContext context) {
@@ -157,23 +160,21 @@ class FullPlanDetails extends StatelessWidget {
           ),
           GestureDetector(
               onTap: () {
-                showModalBottomSheet(
-                  context: context,
-                  builder: (context) {
-                    return CheckCountry(countrycode: countrycode);
-                  },
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
-                    ),
-                  ),
-                  isScrollControlled: true,
-                ).then((value) {
-                  print('dismissed bottom modal sheet');
-                });
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return FullBuy(
+                      countrycode: countrycode,
+                      validity: validity,
+                      data: data,
+                      covrage: covrage,
+                      minutes: minutes,
+                      texts: texts);
+                }));
               },
-              child: FixContainer())
+              child: checker
+                  ? FixContainer()
+                  : Container(
+                      child: SizedBox(),
+                    ))
         ],
       ),
     );

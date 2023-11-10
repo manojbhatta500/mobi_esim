@@ -21,11 +21,20 @@ import 'package:flutter/services.dart';
 import 'package:mobi_esim/screens/signup/term&con.dart';
 import 'package:mobi_esim/screens/signup/verifypage.dart';
 import 'package:mobi_esim/screens/signup/welcome.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
+  Stripe.publishableKey =
+      "pk_test_51OASCtE43HY3bEwGREnWOwzTc5kOFbZxw6F6ySv1yVyIe7l8oHbconkjvZEOD2TCTWsaTPUkXMUmD4ynEdIh47uQ00mBYUZFVx";
+
+  //Load our .env file that contains our Stripe Secret key
+  await dotenv.load(fileName: "assets/.env");
+
   runApp(const Root());
 }
 
@@ -41,6 +50,17 @@ class _RootState extends State<Root> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        // Set your theme properties here
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        // Set the theme to use Theme.MaterialComponents
+        // or Theme.AppCompat if needed
+        // Use the one that is compatible with your dependencies
+        // Example:
+        // fontFamily: 'Roboto', // if needed
+        // appBarTheme: AppBarTheme(elevation: 0), // if needed
+      ),
       initialRoute: '/navigate',
       routes: {
         '/signup': (context) => Signup(),

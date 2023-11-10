@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobi_esim/const/util.dart';
+import 'package:mobi_esim/pyscreen.dart';
 
 class Redirect extends StatefulWidget {
   const Redirect({super.key});
@@ -12,7 +13,9 @@ class _RedirectState extends State<Redirect> {
   void screenchanger(BuildContext context) async {
     await Future.delayed(Duration(seconds: 4));
     print('hello');
-    Navigator.pushNamed(context, '/qrcode');
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return PyScreen();
+    }));
   }
 
   @override

@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:mobi_esim/customwiget/countrydetails.dart';
 import 'package:mobi_esim/customwiget/fullplandetails.dart';
-import 'package:mobi_esim/screens/navbar/countrybundles/tabpages/countrylist.dart';
+
 import 'package:mobi_esim/screens/redirect.dart';
 
 class FullBuy extends StatelessWidget {

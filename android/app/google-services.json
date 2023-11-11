@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "837996528459",
+    "project_id": "mobi-esim",
+    "storage_bucket": "mobi-esim.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837996528459:android:34df25dbbb70b3ed985ece",
+        "android_client_info": {
+          "package_name": "com.example.mobi_esim"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFpKFJx1jiX7j5YuY-a9_7rwTZycXf1U4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

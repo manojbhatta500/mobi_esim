@@ -1,7 +1,6 @@
 import 'package:country_flags/country_flags.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mobi_esim/customwiget/checkcountry.dart';
 import 'package:mobi_esim/customwiget/countrydetails.dart';
 import 'package:mobi_esim/customwiget/plandetails.dart';
 import 'package:mobi_esim/screens/fullplan/fullbuy.dart';

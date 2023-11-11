@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mobi_esim/const/util.dart';
 
 class ContactUs extends StatefulWidget {
@@ -9,6 +10,12 @@ class ContactUs extends StatefulWidget {
 }
 
 class _ContactUsState extends State<ContactUs> {
+  var channel = MethodChannel('nativecode');
+
+  showToast() {
+    channel.invokeMethod('showToast');
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -118,35 +125,38 @@ class _ContactUsState extends State<ContactUs> {
                   SizedBox(
                     height: 0.02 * height,
                   ),
-                  Container(
-                    height: 0.07 * height,
-                    width: double.infinity,
-                    child: Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.email,
-                            size: 20,
-                            color: Colors.blue,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            'Whatsapp ',
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.blue),
-                          ),
-                        ],
+                  GestureDetector(
+                    onTap: showToast,
+                    child: Container(
+                      height: 0.07 * height,
+                      width: double.infinity,
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.email,
+                              size: 20,
+                              color: Colors.blue,
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'Whatsapp ',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.blue),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.blue, width: 2),
-                      borderRadius: BorderRadius.circular(30),
-                      color: Colors.white,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.blue, width: 2),
+                        borderRadius: BorderRadius.circular(30),
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ],

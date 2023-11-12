@@ -27,8 +27,6 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 
-import 'package:firebase_messaging/firebase_messaging.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
@@ -42,12 +40,6 @@ void main() async {
   //Load our .env file that contains our Stripe Secret key
   await dotenv.load(fileName: "assets/.env");
   print('hello world');
-
-  final notificationSettings =
-      await FirebaseMessaging.instance.requestPermission(provisional: true);
-
-  final Token = await FirebaseMessaging.instance.getToken();
-  print('Token: $Token');
 
   runApp(const Root());
 }

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:mobi_esim/customwiget/data.dart';
 import 'package:mobi_esim/customwiget/fullplan.dart';
+import 'package:mobi_esim/providers/manager_provider.dart';
 import 'package:mobi_esim/screens/navigate.dart';
+import 'package:provider/provider.dart';
 
 class CountryDetails extends StatefulWidget {
   final String countrycode;
@@ -16,11 +18,36 @@ class CountryDetails extends StatefulWidget {
 class _CountryDetailsState extends State<CountryDetails>
     with SingleTickerProviderStateMixin {
   late TabController controller;
+  bool isDataAvailable = false; // Add this variable
 
   @override
   void initState() {
     super.initState();
     controller = TabController(length: 2, vsync: this);
+    checker(widget.countrycode);
+  }
+
+  void checker(String code) {
+    final prov = Provider.of<Manager_Provider>(context, listen: false);
+    bool foundMatch = false; // Add this variable
+
+    if (prov.myData != null && prov.myData!.data != null) {
+      // Assuming prov.myData is not null, check each entry in the data list
+      for (var entry in prov.myData!.data!) {
+        if (entry.countryCode?.toUpperCase() == code.toUpperCase()) {
+          // Found a match, you can now use the entry details
+          print('Match found for country code: $code');
+          print('Title: ${entry.title}');
+          foundMatch = true; // Set the flag to true
+          // If you only want to find the first match, you can break here
+          break;
+        }
+      }
+    }
+
+    setState(() {
+      isDataAvailable = foundMatch; // Set the flag based on the match result
+    });
   }
 
   @override
@@ -109,10 +136,18 @@ class _CountryDetailsState extends State<CountryDetails>
               height: 0.8 * height,
               width: double.infinity,
               child: TabBarView(controller: controller, children: [
-                Data(countrycode: widget.countrycode),
-                FullPlan(
-                  countrycode: widget.countrycode,
-                ),
+                isDataAvailable
+                    ? Data(countrycode: widget.countrycode)
+                    : Center(
+                        child: Text('Sorry, this data is unavailable.'),
+                      ),
+                isDataAvailable
+                    ? FullPlan(
+                        countrycode: widget.countrycode,
+                      )
+                    : Center(
+                        child: Text('Sorry, this data is unavailable.'),
+                      ),
               ]),
             ),
           ],

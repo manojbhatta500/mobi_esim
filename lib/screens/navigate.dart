@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mobi_esim/providers/manager_provider.dart';
+
 import 'package:mobi_esim/screens/navbar/countrybundles/countrybundle.dart';
 import 'package:mobi_esim/screens/navbar/profilepages/myesim.dart';
 import 'package:mobi_esim/screens/navbar/profilepages/profilepage.dart';
+import 'package:provider/provider.dart';
 
 class Navigate extends StatefulWidget {
   const Navigate({super.key});
@@ -27,6 +30,9 @@ class _NavigateState extends State<Navigate> {
 
   @override
   Widget build(BuildContext context) {
+    final prov = Provider.of<Manager_Provider>(context);
+    print('total length');
+    print(prov.myData!.data!.length);
     return SafeArea(
         child: Scaffold(
       body: _pages[_selectedIndex],

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:mobi_esim/customwiget/checkcountry.dart';
 import 'package:mobi_esim/customwiget/countrydetails.dart';
 import 'package:mobi_esim/customwiget/plandetails.dart';
+// Import your model
+import 'package:mobi_esim/providers/manager_provider.dart';
+import 'package:provider/provider.dart';
 
 class Data extends StatelessWidget {
   final String countrycode;
@@ -10,59 +13,53 @@ class Data extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final prov = Provider.of<Manager_Provider>(context);
+    var realdata = prov.getSelectedCountryData();
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return CheckCountry(
-                      countrycode: countrycode, data: '2', validity: '7');
-                }));
+            // Display plans using ListView.builder
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: realdata?.operators![0].packages!.length ?? 0,
+              itemBuilder: (context, index) {
+                var package = realdata?.operators![0].packages![index];
+                return GestureDetector(
+                  onTap: () => navigateToCheckCountry(
+                    context,
+                    package?.id ?? '',
+                    package?.day?.toString() ?? '',
+                  ),
+                  child: PlanDetails(
+                    countrycode: countrycode,
+                    validity: package?.day?.toString() ?? '',
+                    data: (package?.data ?? 0).toString(),
+                    covrage: countryNames[countrycode]!,
+                    checker: true,
+                    price: (package?.price ?? 0).toString(),
+                  ),
+                );
               },
-              child: PlanDetails(
-                countrycode: countrycode,
-                validity: '2',
-                data: '7',
-                covrage: countryNames[countrycode]!,
-                checker: true,
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return CheckCountry(
-                      countrycode: countrycode, data: '15', validity: '15');
-                }));
-              },
-              child: PlanDetails(
-                  countrycode: countrycode,
-                  validity: '10',
-                  checker: true,
-                  data: '15',
-                  covrage: countryNames[countrycode]!),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return CheckCountry(
-                      countrycode: countrycode, data: '30', validity: '30');
-                }));
-              },
-              child: PlanDetails(
-                  countrycode: countrycode,
-                  validity: '30',
-                  checker: true,
-                  data: '30',
-                  covrage: countryNames[countrycode]!),
             ),
             SizedBox(
               height: 20,
-            )
+            ),
           ],
         ),
       ),
     );
+  }
+
+  void navigateToCheckCountry(
+      BuildContext context, String data, String validity) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return CheckCountry(
+        countrycode: countrycode,
+        data: data,
+        validity: validity,
+      );
+    }));
   }
 }

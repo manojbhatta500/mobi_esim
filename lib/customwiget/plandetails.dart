@@ -8,12 +8,14 @@ class PlanDetails extends StatelessWidget {
   final String covrage;
   final String countrycode;
   final bool checker;
+  final String price;
   PlanDetails(
       {required this.countrycode,
       required this.validity,
       required this.data,
       required this.covrage,
-      required this.checker});
+      required this.checker,
+      required this.price});
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +62,7 @@ class PlanDetails extends StatelessWidget {
                 ],
               ),
               Text(
-                '$data GB',
+                '$data',
                 style: TextStyle(color: Color(0xff39393c), fontSize: 14),
               ),
             ],
@@ -107,7 +109,11 @@ class PlanDetails extends StatelessWidget {
               ),
             ],
           ),
-          checker ? FixContainer() : Container()
+          checker
+              ? FixContainer(
+                  price: price,
+                )
+              : Container()
         ],
       ),
     );
@@ -115,7 +121,8 @@ class PlanDetails extends StatelessWidget {
 }
 
 class FixContainer extends StatelessWidget {
-  const FixContainer({super.key});
+  const FixContainer({super.key, required this.price});
+  final String price;
 
   @override
   Widget build(BuildContext context) {
@@ -128,7 +135,7 @@ class FixContainer extends StatelessWidget {
           color: Color(0xff3b57a6), borderRadius: BorderRadius.circular(20)),
       child: Center(
           child: Text(
-        '\$5.50 Buy Now',
+        '\$${price} Buy Now',
         style: TextStyle(color: Colors.white, fontSize: 20),
       )),
     );

@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:mobi_esim/models/model.dart';
 import 'package:mobi_esim/providers/manager_provider.dart';
 import 'package:mobi_esim/screens/navigate.dart';
-import 'package:mobi_esim/services/apis/manager.dart';
+
 import 'package:provider/provider.dart';
 
 class Loading extends StatefulWidget {

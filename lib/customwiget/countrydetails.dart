@@ -18,7 +18,7 @@ class CountryDetails extends StatefulWidget {
 class _CountryDetailsState extends State<CountryDetails>
     with SingleTickerProviderStateMixin {
   late TabController controller;
-  bool isDataAvailable = false; // Add this variable
+  late bool isDataAvailable; // Add this variable
 
   @override
   void initState() {
@@ -38,16 +38,23 @@ class _CountryDetailsState extends State<CountryDetails>
           // Found a match, you can now use the entry details
           print('Match found for country code: $code');
           print('Title: ${entry.title}');
+
+          prov.setSelectedCountryData(entry);
+
+          print('this is an instance of prov');
+
+          print(prov.getSelectedCountryData().toString());
+          // i wanna print setselected country data all value
+
           foundMatch = true; // Set the flag to true
           // If you only want to find the first match, you can break here
           break;
+        } else {
+          foundMatch = false;
         }
       }
     }
-
-    setState(() {
-      isDataAvailable = foundMatch; // Set the flag based on the match result
-    });
+    isDataAvailable = foundMatch;
   }
 
   @override

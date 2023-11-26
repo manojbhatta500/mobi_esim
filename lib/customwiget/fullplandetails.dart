@@ -170,7 +170,9 @@ class FullPlanDetails extends StatelessWidget {
                 }));
               },
               child: checker
-                  ? FixContainer()
+                  ? FixContainer(
+                      price: 'help',
+                    )
                   : Container(
                       child: SizedBox(),
                     ))

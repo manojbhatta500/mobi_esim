@@ -67,6 +67,7 @@ class _CheckCountryState extends State<CheckCountry> {
                         data: '${widget.data}',
                         covrage: widget.countrycode,
                         checker: false,
+                        price: 'help',
                       ),
                       Padding(
                         padding: const EdgeInsets.all(10.0),
@@ -92,6 +93,7 @@ class _CheckCountryState extends State<CheckCountry> {
                                 data: '2',
                                 covrage: widget.countrycode,
                                 checker: false,
+                                price: 'help',
                               ),
                             ),
                             GestureDetector(
@@ -109,6 +111,7 @@ class _CheckCountryState extends State<CheckCountry> {
                                 validity: '15',
                                 checker: false,
                                 data: '10',
+                                price: 'help',
                                 covrage: widget.countrycode,
                               ),
                             ),
@@ -125,6 +128,7 @@ class _CheckCountryState extends State<CheckCountry> {
                               child: PlanDetails(
                                 countrycode: widget.countrycode,
                                 validity: '30',
+                                price: 'help',
                                 checker: false,
                                 data: '30',
                                 covrage: widget.countrycode,

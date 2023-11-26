@@ -166,7 +166,11 @@ class _FullBuyState extends State<FullBuy> {
                             alignment: Alignment.centerLeft,
                             child: Text('Additional Information:')),
                       ),
-                      AddInfo(),
+                      AddInfo(
+                        network: 'jell',
+                        plan: 'plan ',
+                        policy: 'policy',
+                      ),
                     ],
                   ),
                 ),

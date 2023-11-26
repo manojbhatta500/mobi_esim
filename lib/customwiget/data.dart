@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobi_esim/customwiget/checkcountry.dart';
 import 'package:mobi_esim/customwiget/countrydetails.dart';
 import 'package:mobi_esim/customwiget/plandetails.dart';
-// Import your model
+
 import 'package:mobi_esim/providers/manager_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -20,7 +20,6 @@ class Data extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Display plans using ListView.builder
             ListView.builder(
               shrinkWrap: true,
               itemCount: realdata?.operators![0].packages!.length ?? 0,
@@ -28,10 +27,12 @@ class Data extends StatelessWidget {
                 var package = realdata?.operators![0].packages![index];
                 return GestureDetector(
                   onTap: () => navigateToCheckCountry(
-                    context,
-                    package?.id ?? '',
-                    package?.day?.toString() ?? '',
-                  ),
+                      context,
+                      package?.data ?? '',
+                      package?.day?.toString() ?? '',
+                      package?.id?.toString() ?? '',
+                      realdata,
+                      package?.price?.toString() ?? ''),
                   child: PlanDetails(
                     countrycode: countrycode,
                     validity: package?.day?.toString() ?? '',
@@ -39,6 +40,7 @@ class Data extends StatelessWidget {
                     covrage: countryNames[countrycode]!,
                     checker: true,
                     price: (package?.price ?? 0).toString(),
+                    name: package?.id?.toString() ?? '',
                   ),
                 );
               },
@@ -52,13 +54,18 @@ class Data extends StatelessWidget {
     );
   }
 
-  void navigateToCheckCountry(
-      BuildContext context, String data, String validity) {
+  void navigateToCheckCountry(BuildContext context, String data,
+      String validity, String name, dynamic realdata, String price) {
+    final prov = Provider.of<Manager_Provider>(context, listen: false);
+
+    prov.setPackages(realdata?.operators[0]?.packages ?? []);
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return CheckCountry(
         countrycode: countrycode,
         data: data,
         validity: validity,
+        title: name,
+        price: price,
       );
     }));
   }

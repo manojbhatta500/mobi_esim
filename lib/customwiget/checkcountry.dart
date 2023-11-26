@@ -3,15 +3,24 @@ import 'package:mobi_esim/customwiget/add_info.dart';
 import 'package:mobi_esim/customwiget/countrydetails.dart';
 
 import 'package:mobi_esim/customwiget/plandetails.dart';
+import 'package:mobi_esim/providers/manager_provider.dart';
 import 'package:mobi_esim/screens/redirect.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:provider/provider.dart';
+import 'package:mobi_esim/models/model.dart';
 
 class CheckCountry extends StatefulWidget {
   final String countrycode;
+  final String title;
   final String validity;
   final String data;
+  final String price;
   CheckCountry(
-      {required this.countrycode, required this.data, required this.validity});
+      {required this.title,
+      required this.countrycode,
+      required this.data,
+      required this.validity,
+      required this.price});
 
   @override
   State<CheckCountry> createState() => _CheckCountryState();
@@ -26,6 +35,25 @@ class _CheckCountryState extends State<CheckCountry> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    final prov = Provider.of<Manager_Provider>(context);
+    var realdata = prov.packages;
+
+    // Get the list of packages from the provider
+    var packages = prov.packages;
+
+    // accessing data for add info
+    Data? selectedCountryData = prov.getSelectedCountryData();
+
+    List<Coverages>? coverages =
+        selectedCountryData?.operators?.first.coverages;
+
+    String? network = coverages?.isNotEmpty == true
+        ? coverages!.first.networks?.first.name ?? ''
+        : '';
+    String? planType = selectedCountryData?.operators?.first.type ?? '';
+    String? activationPolicy =
+        selectedCountryData?.operators?.first.activationPolicy ?? '';
+
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -63,9 +91,10 @@ class _CheckCountryState extends State<CheckCountry> {
                       ),
                       PlanDetails(
                         countrycode: widget.countrycode,
+                        name: '${widget.title}',
                         validity: '${widget.validity}',
                         data: '${widget.data}',
-                        covrage: widget.countrycode,
+                        covrage: countryNames[widget.countrycode]!,
                         checker: false,
                         price: 'help',
                       ),
@@ -75,77 +104,51 @@ class _CheckCountryState extends State<CheckCountry> {
                             style: TextStyle(
                                 color: Color(0xff0082d8), fontSize: 15)),
                       ),
+                      //carasol slider
                       CarouselSlider(
-                          items: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) {
-                                  return CheckCountry(
+                        items: realdata?.map((package) {
+                              return GestureDetector(
+                                onTap: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return CheckCountry(
                                       countrycode: widget.countrycode,
-                                      data: '2',
-                                      validity: '7');
-                                }));
-                              },
-                              child: PlanDetails(
-                                countrycode: widget.countrycode,
-                                validity: '7',
-                                data: '2',
-                                covrage: widget.countrycode,
-                                checker: false,
-                                price: 'help',
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) {
-                                  return CheckCountry(
-                                      countrycode: widget.countrycode,
-                                      data: '15',
-                                      validity: '15');
-                                }));
-                              },
-                              child: PlanDetails(
-                                countrycode: widget.countrycode,
-                                validity: '15',
-                                checker: false,
-                                data: '10',
-                                price: 'help',
-                                covrage: widget.countrycode,
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) {
-                                  return CheckCountry(
-                                      countrycode: widget.countrycode,
-                                      data: '30',
-                                      validity: '30');
-                                }));
-                              },
-                              child: PlanDetails(
-                                countrycode: widget.countrycode,
-                                validity: '30',
-                                price: 'help',
-                                checker: false,
-                                data: '30',
-                                covrage: widget.countrycode,
-                              ),
-                            ),
-                          ],
-                          options: CarouselOptions(
-                              scrollDirection: Axis.horizontal,
-                              autoPlay: true,
-                              autoPlayAnimationDuration: Duration(seconds: 1))),
+                                      title: package.title ?? '',
+                                      data: package.data ?? '',
+                                      validity: package.day?.toString() ?? '',
+                                      price: package.price.toString(),
+                                    );
+                                  }));
+                                },
+                                child: PlanDetails(
+                                  countrycode: widget.countrycode,
+                                  name: package.title ?? '',
+                                  validity: package.day?.toString() ?? '',
+                                  data: package.data ?? '',
+                                  covrage: countryNames[widget.countrycode]!,
+                                  checker: false,
+                                  price: 'help',
+                                ),
+                              );
+                            }).toList() ??
+                            [],
+                        options: CarouselOptions(
+                          scrollDirection: Axis.horizontal,
+                          autoPlay: true,
+                          autoPlayAnimationDuration: Duration(seconds: 1),
+                        ),
+                      ),
                       Padding(
                         padding: const EdgeInsets.only(left: 10),
                         child: Align(
                             alignment: Alignment.centerLeft,
                             child: Text('Additional Information:')),
                       ),
-                      AddInfo(),
+                      AddInfo(
+                        network: network,
+                        plan: planType,
+                        policy: activationPolicy,
+                      ),
                     ],
                   ),
                 ),
@@ -176,7 +179,7 @@ class _CheckCountryState extends State<CheckCountry> {
                         borderRadius: BorderRadius.circular(20)),
                     child: Center(
                         child: Text(
-                      '\$5.50   Buy now',
+                      '\$${widget.price}   Buy now',
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     )),
                   )),

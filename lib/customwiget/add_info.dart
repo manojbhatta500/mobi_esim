@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
 class AddInfo extends StatefulWidget {
-  const AddInfo({super.key});
+  const AddInfo(
+      {super.key,
+      required this.network,
+      required this.plan,
+      required this.policy});
+  final String network;
+  final String plan;
+  final String policy;
 
   @override
   State<AddInfo> createState() => _AddInfoState();
@@ -30,7 +37,7 @@ class _AddInfoState extends State<AddInfo> {
                 children: [Icon(Icons.network_cell), Text('Network')],
               ),
               Row(
-                children: [Text('jio')],
+                children: [Text('${widget.network}')],
               )
             ],
           ),
@@ -42,7 +49,7 @@ class _AddInfoState extends State<AddInfo> {
                 children: [Icon(Icons.check_box), Text('Plan Type')],
               ),
               Row(
-                children: [Text('Data only')],
+                children: [Text('${widget.plan}')],
               ),
             ],
           ),
@@ -63,7 +70,7 @@ class _AddInfoState extends State<AddInfo> {
             ],
           ),
           Text(
-            'THe validity period starts when the esim is connectedto any supported networks.',
+            '${widget.policy}',
             softWrap: true,
           )
         ],

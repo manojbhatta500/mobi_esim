@@ -9,8 +9,10 @@ class PlanDetails extends StatelessWidget {
   final String countrycode;
   final bool checker;
   final String price;
+  final String name;
   PlanDetails(
       {required this.countrycode,
+      required this.name,
       required this.validity,
       required this.data,
       required this.covrage,
@@ -36,7 +38,7 @@ class PlanDetails extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Yes! Go!',
+                '$name',
                 style: TextStyle(color: Color(0xff0082d8), fontSize: 15),
               ),
               CircleAvatar(

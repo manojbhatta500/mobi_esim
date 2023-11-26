@@ -16,16 +16,25 @@ class Manager_Provider with ChangeNotifier {
 
   Data? _selectedCountryData;
 
-  // Method to set the selected country data
   void setSelectedCountryData(Data data) {
     _selectedCountryData = data;
-    print('so watch this ');
+
     print(data.countryCode);
     notifyListeners();
   }
 
-  // Method to get the selected country data
   Data? getSelectedCountryData() {
     return _selectedCountryData;
   }
+
+  //current packages
+
+  List<Packages>? _packages;
+
+  void setPackages(List<Packages> packages) {
+    _packages = packages;
+    notifyListeners();
+  }
+
+  List<Packages>? get packages => _packages;
 }

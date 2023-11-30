@@ -53,7 +53,7 @@ class PlanDetails extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(CupertinoIcons.globe),
+                  Icon(Icons.signal_cellular_alt),
                   SizedBox(
                     width: 5,
                   ),
@@ -74,7 +74,7 @@ class PlanDetails extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(CupertinoIcons.tree),
+                  Icon(CupertinoIcons.globe),
                   SizedBox(
                     width: 5,
                   ),

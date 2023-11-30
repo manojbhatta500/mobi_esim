@@ -49,15 +49,18 @@ class _LoadingState extends State<Loading> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             // If the Future is still running, show a loading indicator
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CircularProgressIndicator(),
-                Text(
-                  'Loading',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
-                ),
-              ],
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CircularProgressIndicator(),
+                  Text(
+                    'Loading',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+                  ),
+                ],
+              ),
             );
           } else if (snapshot.hasError) {
             // If the Future throws an error, display the error message

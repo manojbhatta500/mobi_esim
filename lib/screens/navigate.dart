@@ -33,6 +33,7 @@ class _NavigateState extends State<Navigate> {
     final prov = Provider.of<Manager_Provider>(context);
     print('total length');
     print(prov.myData!.data!.length);
+
     return SafeArea(
         child: Scaffold(
       body: _pages[_selectedIndex],

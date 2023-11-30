@@ -49,6 +49,7 @@ class _CountryBundleState extends State<CountryBundle>
         body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
                 height: 0.03 * height,
@@ -88,8 +89,9 @@ class _CountryBundleState extends State<CountryBundle>
               ),
               Container(
                 height: 0.08 * height,
-                width: double.infinity,
-                child: Center(
+                width: 1 * width,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: TabBar(
                       controller: controller,
                       isScrollable: true,
@@ -97,7 +99,7 @@ class _CountryBundleState extends State<CountryBundle>
                       tabs: [
                         Container(
                           height: 0.06 * height,
-                          width: 0.25 * width,
+                          width: 0.22 * width,
                           padding: EdgeInsets.all(5),
                           decoration: BoxDecoration(
                               color: Color(0xff2941b8ea),
@@ -114,7 +116,7 @@ class _CountryBundleState extends State<CountryBundle>
                         ),
                         Container(
                           height: 0.06 * height,
-                          width: 0.25 * width,
+                          width: 0.22 * width,
                           padding: EdgeInsets.all(5),
                           decoration: BoxDecoration(
                               color: Color(0xff2941b8ea),
@@ -131,7 +133,7 @@ class _CountryBundleState extends State<CountryBundle>
                         ),
                         Container(
                           height: 0.06 * height,
-                          width: 0.25 * width,
+                          width: 0.22 * width,
                           padding: EdgeInsets.all(5),
                           decoration: BoxDecoration(
                               color: Color(0xff2941b8ea),

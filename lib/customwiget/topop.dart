@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobi_esim/customwiget/topcontainer.dart';
 
 class Topop extends StatelessWidget {
   const Topop({super.key});
@@ -40,9 +39,7 @@ class Topop extends StatelessWidget {
               ],
             ),
             Divider(),
-            TopContainer(),
-            TopContainer(),
-            TopContainer(),
+            //here was top container TopContainer()
           ],
         ),
       ),

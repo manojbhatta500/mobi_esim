@@ -1,84 +1,60 @@
 import 'package:flutter/material.dart';
 import 'package:mobi_esim/customwiget/regcontainer.dart';
+import 'package:mobi_esim/models/model.dart';
+import 'package:mobi_esim/providers/manager_provider.dart';
 import 'package:mobi_esim/screens/navbar/countrybundles/tabpages/regions/currentregion.dart';
+import 'package:provider/provider.dart';
 
 class Regions extends StatelessWidget {
-  const Regions({super.key});
+  const Regions({Key? key});
 
   @override
   Widget build(BuildContext context) {
+    List<Data?> regions = Provider.of<Manager_Provider>(context).regions;
+    final prov = Provider.of<Manager_Provider>(context);
+    prov.storeSpecificRegionData();
+
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return SafeArea(
-        child: Scaffold(
-      body: ListView(
-        children: [
-          SizedBox(
-            height: 10,
-          ),
-          GestureDetector(
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return CurrentRegion(continent: 'Europe');
-                }));
-              },
-              child: RegContainer(
-                countryname: 'Europe',
-                image: 'assets/regions/euro.png',
-              )),
-          GestureDetector(
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return CurrentRegion(continent: 'asia');
-                }));
-              },
-              child: RegContainer(
-                countryname: 'Asia',
-                image: 'assets/global.png',
-              )),
-          GestureDetector(
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return CurrentRegion(continent: 'North america');
-                }));
-              },
-              child: RegContainer(
-                countryname: 'North America',
-                image: 'assets/regions/na.png',
-              )),
-          GestureDetector(
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return CurrentRegion(continent: 'south america');
-                }));
-              },
-              child: RegContainer(
-                countryname: 'South America',
-                image: 'assets/regions/na.png',
-              )),
-          GestureDetector(
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return CurrentRegion(continent: 'africa');
-                }));
-              },
-              child: RegContainer(
-                countryname: 'Africa',
-                image: 'assets/regions/africa.png',
-              )),
-          GestureDetector(
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return CurrentRegion(continent: 'Australia');
-                }));
-              },
-              child: RegContainer(
-                countryname: 'Australia',
-                image: 'assets/regions/me.png',
-              )),
-          SizedBox(
-            height: 40,
-          )
-        ],
+      child: Scaffold(
+        body: ListView(
+          children: [
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              height: screenHeight * 0.8,
+              child: ListView.builder(
+                itemCount: regions.length,
+                itemBuilder: (context, index) {
+                  Data? region = regions[index];
+
+                  return GestureDetector(
+                    onTap: () {
+                      Provider.of<Manager_Provider>(context, listen: false)
+                          .setcurrentregion(regions[index]!);
+
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return CurrentRegion(
+                          continent: region.title!,
+                          image: region.operators![0].image!.url,
+                          provider: region.operators![0].title,
+                        );
+                      }));
+                    },
+                    child: RegContainer(
+                      countryname: region!.title!,
+                      image: region.image!.url!,
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
-    ));
+    );
   }
 }

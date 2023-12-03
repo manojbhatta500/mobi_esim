@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobi_esim/customwiget/logbutton.dart';
-
 import 'package:mobi_esim/screens/navbar/countrybundles/tabpages/global.dart';
-
 import 'package:mobi_esim/screens/navbar/countrybundles/tabpages/countrylist.dart';
 import 'package:mobi_esim/screens/navbar/countrybundles/tabpages/regions.dart';
 
@@ -154,11 +152,14 @@ class _CountryBundleState extends State<CountryBundle>
               Container(
                 height: 0.62 * height,
                 width: double.infinity,
-                child: TabBarView(controller: controller, children: [
-                  CountryList(searchQuery: currentSearch),
-                  Regions(),
-                  Global()
-                ]),
+                child: TabBarView(
+                  controller: controller,
+                  children: [
+                    CountryList(searchQuery: currentSearch),
+                    Regions(),
+                    Global(),
+                  ],
+                ),
               )
             ],
           ),

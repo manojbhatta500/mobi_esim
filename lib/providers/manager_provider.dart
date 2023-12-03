@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:mobi_esim/models/model.dart';
+
+import 'package:mobi_esim/screens/supported_world.dart';
 
 class Manager_Provider with ChangeNotifier {
   //overall data
@@ -143,6 +146,12 @@ class Manager_Provider with ChangeNotifier {
 
     if (_worldData != null) {
       print('Stored world data: ${_worldData!.title}');
+
+      // Print the content of countryNames map
+      print('Printing countryNames:');
+      countryNames.forEach((code, name) {
+        print('$code: $name');
+      });
 
       print('created at : ${_worldData!.createdAt}');
       notifyListeners();

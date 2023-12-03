@@ -1,168 +1,149 @@
 import 'package:flutter/material.dart';
-
-import 'package:mobi_esim/customwiget/data.dart';
-import 'package:mobi_esim/customwiget/fullplan.dart';
+import 'package:country_flags/country_flags.dart';
 import 'package:mobi_esim/providers/manager_provider.dart';
-import 'package:mobi_esim/screens/navigate.dart';
 import 'package:provider/provider.dart';
 
-class CountryDetails extends StatefulWidget {
-  final String countrycode;
-
-  CountryDetails({required this.countrycode});
+class SupportedWorld extends StatefulWidget {
+  const SupportedWorld({Key? key}) : super(key: key);
 
   @override
-  State<CountryDetails> createState() => _CountryDetailsState();
+  State<SupportedWorld> createState() => _SupportedWorldState();
 }
 
-class _CountryDetailsState extends State<CountryDetails>
-    with SingleTickerProviderStateMixin {
-  late TabController controller;
-  late bool isDataAvailable; // Add this variable
+class _SupportedWorldState extends State<SupportedWorld> {
+  TextEditingController inputCountry = TextEditingController();
+  String currentSearch = '';
 
-  @override
-  void initState() {
-    super.initState();
-    controller = TabController(length: 2, vsync: this);
-    checker(widget.countrycode);
-  }
-
-  void checker(String code) {
-    final prov = Provider.of<Manager_Provider>(context, listen: false);
-    bool foundMatch = false; // Add this variable
-
-    if (prov.myData != null && prov.myData!.data != null) {
-      // Assuming prov.myData is not null, check each entry in the data list
-      for (var entry in prov.myData!.data!) {
-        if (entry.countryCode?.toUpperCase() == code.toUpperCase()) {
-          // Found a match, you can now use the entry details
-          print('Match found for country code: $code');
-          print('Title: ${entry.title}');
-
-          prov.setSelectedCountryData(entry);
-
-          print('this is an instance of prov');
-
-          print(prov.getSelectedCountryData().toString());
-          // i wanna print setselected country data all value
-
-          foundMatch = true; // Set the flag to true
-          // If you only want to find the first match, you can break here
-          break;
-        } else {
-          foundMatch = false;
-        }
-      }
-    }
-    isDataAvailable = foundMatch;
+  void updateSearchResults(String query) {
+    setState(() {
+      currentSearch = query;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    final prov = Provider.of<Manager_Provider>(context);
+    prov.fetchAndStoreWorldData();
+    prov.setworlddata();
+
+    List<String> aregion =
+        prov.wRegion.map((code) => code.toLowerCase()).toList();
+    print('this is supported region');
+    print('this is the length');
+    print(aregion.length);
+
+    // Print the content of countryNames map
+    print('Printing countryNames:');
+    countryNames.forEach((code, name) {
+      print('$code: $name');
+    });
+
+    List<String> filteredCountries = currentSearch.isEmpty
+        ? aregion
+        : aregion.where((countryCode) {
+            print('code is here: $countryCode');
+            final countryName = countryNames[countryCode]?.toLowerCase() ?? '';
+            print('country name is saved in lowercase: $countryName');
+            return countryName.contains(currentSearch.toLowerCase());
+          }).toList();
+
+    print('Filtered Countries: $filteredCountries');
+
     return SafeArea(
-        child: Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                IconButton(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          padding: EdgeInsets.all(16),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  IconButton(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return Navigate();
-                      }));
+                      Navigator.pop(context);
                     },
                     icon: Icon(
                       Icons.arrow_back_ios,
                       color: Color(0xff3b57a6),
-                    )),
-                SizedBox(
-                  width: 0.2 * width,
-                ),
-                Text(
-                  '${countryNames[widget.countrycode]}',
-                  style: TextStyle(fontSize: 20, color: Color(0xff3b57a6)),
-                )
-              ],
-            ),
-            SizedBox(
-              height: 0.02 * height,
-            ),
-            Container(
-              height: 0.08 * height,
-              width: width,
-              child: Center(
-                child: TabBar(
-                    controller: controller,
-                    isScrollable: true,
-                    indicator: null,
-                    tabs: [
-                      Container(
-                        height: 0.06 * height,
-                        width: 0.4 * width,
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                            color: Color(0xff2941b8ea),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Tab(
-                          child: Padding(
-                            padding: const EdgeInsets.all(3.0),
-                            child: Text(
-                              'Data',
-                              style: TextStyle(color: Color(0xff41b8ea)),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        height: 0.06 * height,
-                        width: 0.4 * width,
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                            color: Color(0xff2941b8ea),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Tab(
-                          child: Padding(
-                            padding: const EdgeInsets.all(3.0),
-                            child: Text(
-                              'Data/calls/Text',
-                              style: TextStyle(color: Color(0xff41b8ea)),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ]),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 0.2 * width,
+                  ),
+                  Text(
+                    'Supported Countries',
+                    style: TextStyle(color: Colors.blue),
+                  ),
+                ],
               ),
-            ),
-            Container(
-              height: 0.8 * height,
-              width: double.infinity,
-              child: TabBarView(controller: controller, children: [
-                isDataAvailable
-                    ? Data(countrycode: widget.countrycode)
-                    : Center(
-                        child: Text('Sorry, this data is unavailable.'),
-                      ),
-                isDataAvailable
-                    ? Center(
-                        child: Text('Sorry, this data is unavailable.'),
-                      )
-                    : Center(
-                        child: Text('Sorry, this data is unavailable.'),
-                      ),
-              ]),
-            ),
-          ],
+              SizedBox(height: 10),
+              TextField(
+                controller: inputCountry,
+                onChanged: updateSearchResults,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Color(0xffF4F4F4),
+                  prefixIcon: Icon(Icons.search),
+                  hintText: 'Search supported countries',
+                  contentPadding: EdgeInsets.symmetric(vertical: 6),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              getCountryList(filteredCountries, 0.8 * height),
+            ],
+          ),
         ),
       ),
-    ));
+    );
+  }
+
+  Widget getCountryList(List<String> filteredCountries, double height) {
+    return Container(
+      height: height,
+      child: ListView.builder(
+        itemCount: filteredCountries.length,
+        itemBuilder: (BuildContext context, int index) {
+          final countryCode = filteredCountries[index];
+          return Container(
+            padding: EdgeInsets.all(2),
+            height: 60,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: Color(0xff2941b8ea),
+            ),
+            margin: EdgeInsets.all(13),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10),
+                      child:
+                          CountryFlag.fromCountryCode(countryCode, width: 40),
+                    ),
+                    Text(
+                      countryNames[countryCode] ?? 'unknown name',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
   }
 }
+
+// Placeholder countryNames map (replace it with your actual data)
 
 Map<String, String> countryNames = {
   'af': 'Afghanistan',

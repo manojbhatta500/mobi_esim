@@ -5,9 +5,7 @@ import 'package:mobi_esim/providers/manager_provider.dart';
 import 'package:provider/provider.dart';
 
 class SupportedRegion extends StatefulWidget {
-  SupportedRegion({Key? key, required this.checker}) : super(key: key);
-
-  final bool checker;
+  SupportedRegion({Key? key}) : super(key: key);
 
   @override
   State<SupportedRegion> createState() => _SupportedRegionState();
@@ -28,21 +26,12 @@ class _SupportedRegionState extends State<SupportedRegion> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     final prov = Provider.of<Manager_Provider>(context);
-    prov.fetchAndStoreWorldData();
-    prov.setworlddata();
-    List<String> aregion; // Declare outside of if-else blocks
 
-    if (widget.checker == false) {
-      aregion = prov.aRegion.map((code) => code.toLowerCase()).toList();
-      print('this is supported region');
-      print('this is the length');
-      print(aregion.length);
-    } else {
-      aregion = prov.wRegion.map((code) => code.toLowerCase()).toList();
-      print('this is supported region');
-      print('this is the length');
-      print(aregion.length);
-    }
+    List<String> aregion =
+        prov.aRegion.map((code) => code.toLowerCase()).toList();
+    print('this is supported region');
+    print('this is the length');
+    print(aregion.length);
 
     List<String> filteredCountries = currentSearch.isEmpty
         ? aregion
@@ -79,23 +68,21 @@ class _SupportedRegionState extends State<SupportedRegion> {
                 ],
               ),
               SizedBox(height: 10),
-              if (widget.checker == false) ...[
-                TextField(
-                  controller: inputCountry,
-                  onChanged: updateSearchResults,
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Color(0xffF4F4F4),
-                    prefixIcon: Icon(Icons.search),
-                    hintText: 'Search supported countries',
-                    contentPadding: EdgeInsets.symmetric(vertical: 6),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
+              TextField(
+                controller: inputCountry,
+                onChanged: updateSearchResults,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Color(0xffF4F4F4),
+                  prefixIcon: Icon(Icons.search),
+                  hintText: 'Search supported countries',
+                  contentPadding: EdgeInsets.symmetric(vertical: 6),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
                   ),
                 ),
-                SizedBox(height: 10),
-              ],
+              ),
+              SizedBox(height: 10),
               getCountryList(filteredCountries, 0.8 * height),
             ],
           ),

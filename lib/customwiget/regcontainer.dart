@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class RegContainer extends StatelessWidget {
   late String countryname;
   late String image;
@@ -20,7 +19,14 @@ class RegContainer extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Image(image: NetworkImage('$image')),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(30),
+            child: Image.network(
+              '$image',
+              fit:
+                  BoxFit.cover, // Use BoxFit.cover to maintain the aspect ratio
+            ),
+          ),
           Text(
             '$countryname',
             style: TextStyle(color: Color(0xff343434), fontSize: 16),

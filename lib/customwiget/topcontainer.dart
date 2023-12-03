@@ -31,7 +31,8 @@ class TopContainer extends StatelessWidget {
         margin: EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
         decoration: BoxDecoration(
-            color: Color(0xff0b1191), borderRadius: BorderRadius.circular(20)),
+            color: Color(0xff2941b8ea),
+            borderRadius: BorderRadius.circular(20)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -40,11 +41,11 @@ class TopContainer extends StatelessWidget {
               children: [
                 Text(
                   '$provider',
-                  style: TextStyle(color: Colors.white, fontSize: 14),
+                  style: TextStyle(color: Colors.black, fontSize: 14),
                 ),
                 Image(
                   image: NetworkImage('$image'),
-                  width: 100,
+                  width: 80,
                 )
               ],
             ),
@@ -55,14 +56,14 @@ class TopContainer extends StatelessWidget {
                   children: [
                     Icon(
                       CupertinoIcons.globe,
-                      color: Colors.white,
+                      color: Colors.black,
                     ),
                     SizedBox(
                       width: 5,
                     ),
                     Text(
                       'Countries',
-                      style: TextStyle(color: Colors.white, fontSize: 14),
+                      style: TextStyle(color: Colors.black, fontSize: 14),
                     ),
                   ],
                 ),
@@ -71,9 +72,7 @@ class TopContainer extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => SupportedRegion(
-                                  checker: false,
-                                )));
+                            builder: (context) => SupportedRegion()));
                   },
                   child: RegCountry(
                     number: coverage.toString(),
@@ -88,20 +87,20 @@ class TopContainer extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.signal_cellular_4_bar_rounded,
-                      color: Colors.white,
+                      color: Colors.black,
                     ),
                     SizedBox(
                       width: 5,
                     ),
                     Text(
                       'Data',
-                      style: TextStyle(color: Colors.white, fontSize: 14),
+                      style: TextStyle(color: Colors.black, fontSize: 14),
                     ),
                   ],
                 ),
                 Text(
                   '$data',
-                  style: TextStyle(color: Colors.white, fontSize: 14),
+                  style: TextStyle(color: Colors.black, fontSize: 14),
                 ),
               ],
             ),
@@ -112,56 +111,37 @@ class TopContainer extends StatelessWidget {
                   children: [
                     Icon(
                       CupertinoIcons.timer,
-                      color: Colors.white,
+                      color: Colors.black,
                     ),
                     SizedBox(
                       width: 5,
                     ),
                     Text(
                       'Validity',
-                      style: TextStyle(color: Colors.white, fontSize: 14),
+                      style: TextStyle(color: Colors.black, fontSize: 14),
                     ),
                   ],
                 ),
                 Text(
                   '$validity Day',
-                  style: TextStyle(color: Colors.white, fontSize: 14),
+                  style: TextStyle(color: Colors.black, fontSize: 14),
                 ),
               ],
             ),
             SizedBox(
               height: 10,
             ),
-            GestureDetector(
-              onTap: () {
-                showModalBottomSheet(
-                  context: context,
-                  builder: (context) {
-                    return DataCunsumptions();
-                  },
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
-                    ),
-                  ),
-                  isScrollControlled: true,
-                ).then((value) {
-                  print('dismissed bottom modal sheet');
-                });
-              },
-              child: Container(
-                width: 0.8 * width,
-                height: 0.06 * height,
-                decoration: BoxDecoration(
-                    color: Color(0xff3b57a6),
-                    borderRadius: BorderRadius.circular(20)),
-                child: Center(
-                    child: Text(
-                  '\$${price} Buy now',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                )),
-              ),
+            Container(
+              width: 0.8 * width,
+              height: 0.06 * height,
+              decoration: BoxDecoration(
+                  color: Color(0xff3b57a6),
+                  borderRadius: BorderRadius.circular(20)),
+              child: Center(
+                  child: Text(
+                '\$${price} Buy now',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              )),
             )
           ],
         ));

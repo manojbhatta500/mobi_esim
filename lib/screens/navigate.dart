@@ -31,30 +31,35 @@ class _NavigateState extends State<Navigate> {
   @override
   Widget build(BuildContext context) {
     final prov = Provider.of<Manager_Provider>(context);
+
+    // Perform null checks
+    int dataLength = prov.myData?.data?.length ?? 0;
+
     print('total length');
-    print(prov.myData!.data!.length);
+    print(dataLength);
 
     return SafeArea(
-        child: Scaffold(
-      body: _pages[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.sim_card),
-            label: 'My Esim',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
+      child: Scaffold(
+        body: _pages[_selectedIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.sim_card),
+              label: 'My Esim',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Profile',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
+        ),
       ),
-    ));
+    );
   }
 }

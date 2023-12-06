@@ -1,6 +1,8 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobi_esim/customwiget/reg_country.dart';
+import 'package:mobi_esim/screens/navbar/countrybundles/tabpages/regions/currentregion.dart';
 import 'package:mobi_esim/screens/supported_region.dart';
 
 class RegionBuy extends StatelessWidget {
@@ -33,34 +35,308 @@ class RegionBuy extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: Icon(
-                    Icons.arrow_back_ios,
-                    color: Color(0xff3b57a6),
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(
+                      Icons.arrow_back_ios,
+                      color: Color(0xff3b57a6),
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: 0.2 * width,
-                ),
-                Text(
-                  '$continent',
-                  style: TextStyle(fontSize: 20, color: Color(0xff3b57a6)),
-                ),
-              ],
-            ),
-            Container(
-                height: 0.5 * height,
+                  SizedBox(
+                    width: 0.2 * width,
+                  ),
+                  Text(
+                    '$continent',
+                    style: TextStyle(fontSize: 20, color: Color(0xff3b57a6)),
+                  ),
+                ],
+              ),
+              Container(
+                  height: 0.3 * height,
+                  width: width,
+                  margin:
+                      EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+                  decoration: BoxDecoration(
+                      color: Color(0xff2941b8ea),
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Center(
+                        child: Image(
+                          image: NetworkImage('$image'),
+                          width: 100,
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Icon(
+                                CupertinoIcons.globe,
+                                color: Colors.black,
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                'Countries',
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 14),
+                              ),
+                            ],
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SupportedRegion()));
+                            },
+                            child: RegCountry(
+                              number: '$countries',
+                            ),
+                          )
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.signal_cellular_4_bar_rounded,
+                                color: Colors.black,
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                'Data',
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 14),
+                              ),
+                            ],
+                          ),
+                          Text(
+                            '$data',
+                            style: TextStyle(color: Colors.black, fontSize: 14),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Icon(
+                                CupertinoIcons.timer,
+                                color: Colors.black,
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                'Validity',
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 14),
+                              ),
+                            ],
+                          ),
+                          Text(
+                            ' $validity',
+                            style: TextStyle(color: Colors.black, fontSize: 14),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Icon(
+                                CupertinoIcons.money_dollar,
+                                color: Colors.black,
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                'price',
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 14),
+                              ),
+                            ],
+                          ),
+                          Text(
+                            "\$ $price",
+                            style: TextStyle(color: Colors.black, fontSize: 14),
+                          ),
+                        ],
+                      ),
+                    ],
+                  )),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text('Available Packages',
+                    style: TextStyle(color: Color(0xff0082d8), fontSize: 15)),
+              ),
+              Container(
                 width: width,
+                child: CarouselSlider(
+                  options: CarouselOptions(
+                    scrollDirection: Axis.horizontal,
+                    autoPlay: true,
+                    autoPlayAnimationDuration: Duration(seconds: 1),
+                  ),
+                  items: real_regions.map((item) {
+                    return Builder(
+                      builder: (BuildContext context) {
+                        return Container(
+                            height: 0.2 * height,
+                            width: width,
+                            margin: EdgeInsets.only(
+                                left: 10, right: 10, bottom: 10, top: 10),
+                            padding: EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 30),
+                            decoration: BoxDecoration(
+                                color: Color(0xff2941b8ea),
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          CupertinoIcons.globe,
+                                          color: Colors.black,
+                                        ),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        Text(
+                                          'Countries',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 14),
+                                        ),
+                                      ],
+                                    ),
+                                    RegCountry(
+                                      number: '${item.countries}',
+                                    )
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          Icons.signal_cellular_4_bar_rounded,
+                                          color: Colors.black,
+                                        ),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        Text(
+                                          'Data',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 14),
+                                        ),
+                                      ],
+                                    ),
+                                    Text(
+                                      '${item.data}',
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 14),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          CupertinoIcons.timer,
+                                          color: Colors.black,
+                                        ),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        Text(
+                                          'Validity',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 14),
+                                        ),
+                                      ],
+                                    ),
+                                    Text(
+                                      ' ${item.validity}',
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 14),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          CupertinoIcons.money_dollar,
+                                          color: Colors.black,
+                                        ),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        Text(
+                                          'price',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 14),
+                                        ),
+                                      ],
+                                    ),
+                                    Text(
+                                      "\$ ${item.price}",
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 14),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ));
+                      },
+                    );
+                  }).toList(),
+                ),
+              ),
+              Container(
+                height: 0.3 * height,
+                width: 0.9 * width,
                 margin:
                     EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
@@ -68,189 +344,67 @@ class RegionBuy extends StatelessWidget {
                     color: Color(0xff2941b8ea),
                     borderRadius: BorderRadius.circular(20)),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Center(
-                      child: Image(
-                        image: NetworkImage('$image'),
-                        width: 100,
-                      ),
-                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
-                          children: [
-                            Icon(
-                              CupertinoIcons.globe,
-                              color: Colors.black,
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Text(
-                              'Countries',
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 14),
-                            ),
-                          ],
+                          children: [Icon(Icons.network_cell), Text('Network')],
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SupportedRegion()));
-                          },
-                          child: RegCountry(
-                            number: '$countries',
-                          ),
+                        Row(
+                          children: [Text('$network')],
                         )
                       ],
                     ),
+                    Divider(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
-                          children: [
-                            Icon(
-                              Icons.signal_cellular_4_bar_rounded,
-                              color: Colors.black,
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Text(
-                              'Data',
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 14),
-                            ),
-                          ],
+                          children: [Icon(Icons.check_box), Text('Plan Type')],
                         ),
-                        Text(
-                          '$data',
-                          style: TextStyle(color: Colors.black, fontSize: 14),
+                        Row(
+                          children: [Text('$plan')],
                         ),
                       ],
                     ),
+                    Divider(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
                           children: [
-                            Icon(
-                              CupertinoIcons.timer,
-                              color: Colors.black,
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Text(
-                              'Validity',
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 14),
-                            ),
+                            Icon(Icons.verified),
+                            Text('policy'),
                           ],
                         ),
-                        Text(
-                          ' $validity',
-                          style: TextStyle(color: Colors.black, fontSize: 14),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
                         Row(
-                          children: [
-                            Icon(
-                              CupertinoIcons.money_dollar,
-                              color: Colors.black,
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Text(
-                              'price',
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 14),
-                            ),
-                          ],
-                        ),
-                        Text(
-                          "\$ $price",
-                          style: TextStyle(color: Colors.black, fontSize: 14),
+                          children: [Text('$policy')],
                         ),
                       ],
                     ),
                   ],
-                )),
-            Container(
-              height: 0.3 * height,
-              width: 0.9 * width,
-              margin: EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
-              decoration: BoxDecoration(
-                  color: Color(0xff2941b8ea),
-                  borderRadius: BorderRadius.circular(20)),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [Icon(Icons.network_cell), Text('Network')],
-                      ),
-                      Row(
-                        children: [Text('$network')],
-                      )
-                    ],
-                  ),
-                  Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [Icon(Icons.check_box), Text('Plan Type')],
-                      ),
-                      Row(
-                        children: [Text('$plan')],
-                      ),
-                    ],
-                  ),
-                  Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(Icons.verified),
-                          Text('policy'),
-                        ],
-                      ),
-                      Row(
-                        children: [Text('$policy')],
-                      ),
-                    ],
-                  ),
-                ],
+                ),
               ),
-            ),
-            Container(
-              width: 0.8 * width,
-              height: 0.06 * height,
-              decoration: BoxDecoration(
-                  color: Color(0xff3b57a6),
-                  borderRadius: BorderRadius.circular(20)),
-              child: Center(
-                  child: Text(
-                '\$$price Buy now',
-                style: TextStyle(color: Colors.white, fontSize: 20),
-              )),
-            )
-          ],
+              Container(
+                width: 0.8 * width,
+                height: 0.06 * height,
+                decoration: BoxDecoration(
+                    color: Color(0xff3b57a6),
+                    borderRadius: BorderRadius.circular(20)),
+                child: Center(
+                    child: Text(
+                  '\$$price Buy now',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                )),
+              ),
+              SizedBox(
+                height: 10,
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -23,6 +23,15 @@ class PlanDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    String removeAfterFirstDash(String text) {
+      if (text.contains("-")) {
+        return text.substring(0, text.indexOf("-"));
+      } else {
+        return text;
+      }
+    }
+
+    String result = removeAfterFirstDash(name);
 
     return Container(
       height: 0.28 * height,
@@ -38,7 +47,7 @@ class PlanDetails extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '$name',
+                '$result',
                 style: TextStyle(color: Color(0xff0082d8), fontSize: 15),
               ),
               CircleAvatar(

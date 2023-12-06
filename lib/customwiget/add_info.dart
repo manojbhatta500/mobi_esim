@@ -20,7 +20,7 @@ class _AddInfoState extends State<AddInfo> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Container(
-      height: 0.2 * height,
+      height: 0.23 * height,
       width: 0.9 * width,
       margin: EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
@@ -55,22 +55,20 @@ class _AddInfoState extends State<AddInfo> {
           ),
           Divider(),
           Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
-                children: [
-                  Icon(Icons.verified),
-                ],
+                children: [Icon(Icons.check_box), Text('Plan Type')],
               ),
               Row(
                 children: [
-                  Text('Activation policy'),
+                  Text('${widget.policy}'),
                 ],
-              )
+              ),
             ],
           ),
           Text(
-            '${widget.policy}',
+            '',
             softWrap: true,
           )
         ],

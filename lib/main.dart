@@ -4,14 +4,11 @@ import 'package:mobi_esim/loading.dart';
 import 'package:mobi_esim/providers/manager_provider.dart';
 import 'package:mobi_esim/screens/and_guide.dart';
 import 'package:mobi_esim/screens/androidguide/fromgallery.dart';
-
 import 'package:mobi_esim/screens/ios_guide.dart';
-
 import 'package:mobi_esim/screens/navbar/profilepages/contactus.dart';
 import 'package:mobi_esim/screens/navbar/profilepages/deleteacc.dart';
 import 'package:mobi_esim/screens/navbar/profilepages/my_wallet.dart';
 import 'package:mobi_esim/screens/navbar/profilepages/myesim.dart';
-
 import 'package:mobi_esim/screens/navbar/profilepages/userguide.dart';
 import 'package:mobi_esim/screens/navigate.dart';
 import 'package:mobi_esim/screens/notification.dart';
@@ -26,10 +23,8 @@ import 'package:mobi_esim/screens/signup/verifypage.dart';
 import 'package:mobi_esim/screens/signup/welcome.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:mobi_esim/screens/test.dart';
-
 import 'package:provider/provider.dart';
 
 void main() async {

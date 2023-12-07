@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:mobi_esim/models/model.dart';
@@ -180,5 +182,31 @@ class Manager_Provider with ChangeNotifier {
 
   void clearWorld() {
     _wRegion.clear();
+  }
+
+  //signup data
+
+  String _email = 'null';
+
+  String get email => _email;
+
+  void setemail(String email) {
+    _email = email;
+  }
+
+  // signup credentials
+
+  String _token = '';
+  String _userid = '';
+  String get token => _token;
+  String get userid => _userid;
+
+  void setUserData(String token, String userid) {
+    _token = token;
+    print('token$_token');
+
+    _userid = userid;
+
+    print('token$_userid');
   }
 }

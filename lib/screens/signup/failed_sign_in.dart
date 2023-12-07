@@ -67,7 +67,7 @@ class _FailedSigninState extends State<FailedSignin> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, '/welcome');
+                  Navigator.pushReplacementNamed(context, '/signup');
                 },
                 child: Container(
                   height: 0.06 * height,
@@ -77,7 +77,7 @@ class _FailedSigninState extends State<FailedSignin> {
                       borderRadius: BorderRadius.circular(20)),
                   child: Center(
                     child: Text(
-                      'Resend Link',
+                      'Try again',
                       style: TextStyle(
                           fontSize: 17,
                           color: Colors.white,

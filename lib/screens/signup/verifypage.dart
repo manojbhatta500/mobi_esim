@@ -1,13 +1,115 @@
-import 'package:flutter/material.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
+import 'dart:async';
+import 'dart:convert';
 
-class Verify extends StatelessWidget {
-  const Verify({super.key});
+import 'package:flutter/material.dart';
+import 'package:mobi_esim/providers/manager_provider.dart';
+import 'package:mobi_esim/services/apis/manager.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
+
+class Verify extends StatefulWidget {
+  Verify({super.key});
+
+  @override
+  State<Verify> createState() => _VerifyState();
+}
+
+class _VerifyState extends State<Verify> {
+  Manager m1 = Manager();
+
+  late Timer _resendCodeTimer;
+  late int _remainingSeconds;
+
+  String enteredotp = '';
+
+  @override
+  void initState() {
+    super.initState();
+
+    _remainingSeconds = 101;
+    _startResendCodeTimer();
+  }
+
+  void _startResendCodeTimer() {
+    _resendCodeTimer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        _remainingSeconds = 101 - timer.tick;
+      });
+
+      if (_remainingSeconds <= 0) {
+        // Timer expired, you can perform additional logic here if needed
+        timer.cancel();
+      }
+    });
+  }
+
+  Map<String, dynamic> registrationResponse = {};
+
+  Future<void> verify(String email, String otp) async {
+    http.Response response = await m1.VerifyEmail(email, otp);
+    print('StatusCode${response.statusCode}');
+    print('body${response.body}');
+
+    if (response.statusCode == 200) {
+      registrationResponse = jsonDecode(response.body);
+      print('this is token: ${registrationResponse['token']}');
+      print('this is userid: ${registrationResponse['userid']}');
+      print('this is type: ${registrationResponse['type']}');
+
+      Navigator.pushNamed(context, '/welcome');
+    } else {
+      Navigator.pushNamed(context, '/failed');
+    }
+  }
+
+  @override
+  void dispose() {
+    // Cancel the timer when the widget is disposed
+    _resendCodeTimer.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    final prov = Provider.of<Manager_Provider>(context);
+
+    void showSnackbar(BuildContext context, String message) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(message),
+          duration: Duration(seconds: 3), // Adjust the duration as needed
+        ),
+      );
+    }
+
+    Future<void> verify(String email, String otp) async {
+      http.Response response = await m1.VerifyEmail(email, otp);
+      print('StatusCode${response.statusCode}');
+      print('body${response.body}');
+
+      if (response.statusCode == 200) {
+        registrationResponse = jsonDecode(response.body);
+        print('this is token: ${registrationResponse['token']}');
+        print('this is userid: ${registrationResponse['userid']}');
+        print('this is type: ${registrationResponse['type']}');
+        prov.setUserData('${registrationResponse['token']}',
+            '${registrationResponse['userid']}');
+
+        print('this is  provider code');
+        print('this is  provider token');
+        print('${prov.token}');
+        print('this is  provider userid');
+        print('${prov.userid}');
+
+        Navigator.pushNamed(context, '/welcome');
+      } else {
+        Navigator.pushNamed(context, '/failed');
+      }
+    }
+
     return SafeArea(
         child: Scaffold(
       body: SingleChildScrollView(
@@ -20,7 +122,7 @@ class Verify extends StatelessWidget {
               children: [
                 IconButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.pushNamed(context, '/signup');
                     },
                     icon: Icon(
                       Icons.arrow_back_ios,
@@ -71,7 +173,7 @@ class Verify extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: "Johndow@gmail.com",
+                      text: "${prov.email}",
                       style: TextStyle(
                         color: Color(
                             0xff464343), // Your desired style for the email
@@ -97,7 +199,7 @@ class Verify extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: PinCodeTextField(
                 appContext: context,
-                length: 5,
+                length: 6,
                 obscureText: false,
                 animationType: AnimationType.none,
                 pinTheme: PinTheme(
@@ -109,7 +211,11 @@ class Verify extends StatelessWidget {
                 animationDuration: Duration(milliseconds: 300),
                 enableActiveFill: false,
                 onCompleted: (v) {
-                  print("Completed");
+                  setState(() {
+                    enteredotp = v;
+                    print('otp : $enteredotp');
+                    print('v value : $v');
+                  });
                 },
                 beforeTextPaste: (text) {
                   print("Allowing to paste $text");
@@ -120,7 +226,8 @@ class Verify extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, '/failed'); //'/welcome'
+                print('entered otp : $enteredotp');
+                verify('${prov.email}', '${enteredotp.toString()}');
               },
               child: Container(
                 height: 0.07 * height,
@@ -141,26 +248,50 @@ class Verify extends StatelessWidget {
             ),
             Container(
               margin:
-                  EdgeInsets.symmetric(horizontal: 0.15 * width, vertical: 5),
+                  EdgeInsets.symmetric(horizontal: 0.2 * width, vertical: 10),
               child: Row(
                 children: [
                   Text("Didn’t receive a code? ",
                       style: TextStyle(color: Color(0xff817a7a), fontSize: 16)),
-                  Text("Resend now",
-                      style: TextStyle(color: Color(0xff41b8ea), fontSize: 14))
+                  GestureDetector(
+                    onTap: () {
+                      if (_resendCodeTimer.isActive) {
+                        // Timer is still active, show a message or disable the button
+                        showSnackbar(
+                            context, "Please wait for the timer to expire.");
+                      } else {
+                        // Start the timer and trigger the resend code logic
+                        _resendCodeTimer = Timer(Duration(seconds: 101), () {
+                          m1.RegisterUSer('${prov.email}');
+                          showSnackbar(context, "Verification code resent!");
+                        });
+                      }
+                    },
+                    child: Text("Resend now",
+                        style:
+                            TextStyle(color: Color(0xff41b8ea), fontSize: 14)),
+                  )
                 ],
               ),
             ),
-            Container(
-              margin:
-                  EdgeInsets.symmetric(horizontal: 0.3 * width, vertical: 10),
-              child: Row(
-                children: [
-                  Text("Time Remaining ",
-                      style: TextStyle(color: Color(0xff817a7a), fontSize: 14)),
-                  Text("00:58",
-                      style: TextStyle(color: Color(0xff41b8ea), fontSize: 14))
-                ],
+            Center(
+              child: Container(
+                width: 0.8 * width,
+                margin: EdgeInsets.symmetric(
+                    horizontal: 0.25 * width, vertical: 10),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Row(
+                    children: [
+                      Text("Time Remaining: ",
+                          style: TextStyle(
+                              color: Color(0xff817a7a), fontSize: 14)),
+                      Text("$_remainingSeconds seconds. ",
+                          style:
+                              TextStyle(color: Color(0xff41b8ea), fontSize: 14))
+                    ],
+                  ),
+                ),
               ),
             ),
           ],

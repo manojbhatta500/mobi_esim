@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:mobi_esim/models/model.dart';
 
@@ -16,7 +17,6 @@ class Manager {
 
       model myModel = model.fromJson(jsonData);
 
-      // Now you can access data using myModel
       if (myModel.data != null && myModel.data!.isNotEmpty) {
         Data firstData = myModel.data![0];
 
@@ -68,6 +68,74 @@ class Manager {
     } else {
       throw Exception(
           'Failed to load data. Status code: ${response.statusCode}');
+    }
+  }
+
+  Future<http.Response> RegisterUSer(String email) async {
+    try {
+      var api = 'http://165.73.252.118:4000/api/auth/register';
+
+      Map<String, dynamic> requestData = {
+        "email": "$email",
+        "type": "email",
+      };
+      String requestBody = jsonEncode(requestData);
+
+      final response = await http.post(
+        Uri.parse(api),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: requestBody,
+      );
+
+      if (response.statusCode == 200) {
+        print('Registration successful!');
+        print('Response body: ${response.body}');
+        return response;
+      } else {
+        print('Registration failed. Status code: ${response.statusCode}');
+        print('Response body: ${response.body}');
+        return response;
+      }
+    } catch (e) {
+      print('$e is the error');
+      rethrow;
+    }
+  }
+
+  Future<http.Response> VerifyEmail(String email, String otp) async {
+    try {
+      var api = 'http://165.73.252.118:4000/api/auth/verify';
+
+      Map<String, dynamic> requestData = {
+        "email": "$email",
+        "otp": "$otp",
+        "type": "email"
+      };
+
+      String requestBody = jsonEncode(requestData);
+
+      final response = await http.post(
+        Uri.parse(api),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: requestBody,
+      );
+
+      if (response.statusCode == 200) {
+        print('Registration successful!');
+        print('Response body: ${response.body}');
+        return response;
+      } else {
+        print('Registration failed. Status code: ${response.statusCode}');
+        print('Response body: ${response.body}');
+        return response;
+      }
+    } catch (e) {
+      print('$e is the error');
+      rethrow;
     }
   }
 }

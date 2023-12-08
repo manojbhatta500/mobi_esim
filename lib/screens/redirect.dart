@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobi_esim/const/util.dart';
+import 'package:mobi_esim/providers/manager_provider.dart';
 import 'package:mobi_esim/pyscreen.dart';
+import 'package:provider/provider.dart';
 
 class Redirect extends StatefulWidget {
   const Redirect({super.key});
@@ -13,6 +15,7 @@ class _RedirectState extends State<Redirect> {
   void screenchanger(BuildContext context) async {
     await Future.delayed(Duration(seconds: 4));
     print('hello');
+
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return PyScreen();
     }));

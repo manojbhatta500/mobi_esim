@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mobi_esim/customwiget/profile_menu.dart';
+import 'package:mobi_esim/providers/manager_provider.dart';
 import 'package:mobi_esim/screens/navbar/profilepages/term.dart';
+import 'package:mobi_esim/services/apis/manager.dart';
+import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -10,8 +14,43 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  Manager manager = Manager();
+
   @override
   Widget build(BuildContext context) {
+    final prov = Provider.of<Manager_Provider>(context);
+
+    Widget _buildPopupDialog(BuildContext context, String email) {
+      return new AlertDialog(
+        title: const Text('Delete Account'),
+        content: new Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text("Are you sure ?"),
+          ],
+        ),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              print('account not  deleted');
+            },
+            child: const Text('No '),
+          ),
+          TextButton(
+            onPressed: () async {
+              await manager.DeleteUser(prov.email);
+              prov.cleardata(context);
+              Navigator.pushReplacementNamed(context, '/loading');
+              print('account deleted');
+            },
+            child: const Text('Yes'),
+          ),
+        ],
+      );
+    }
+
     return SafeArea(
         child: Scaffold(
       body: SingleChildScrollView(
@@ -83,7 +122,17 @@ class _ProfilePageState extends State<ProfilePage> {
                   Navigator.pushNamed(context, '/userguide');
                 },
                 child: ProfileMenu(
-                    geticon: Icons.assignment_add, heading: 'User Guide'))
+                    geticon: Icons.assignment_add, heading: 'User Guide')),
+            GestureDetector(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) =>
+                        _buildPopupDialog(context, prov.email),
+                  );
+                },
+                child: ProfileMenu(
+                    geticon: Icons.logout, heading: 'Delete account'))
           ],
         ),
       ),

@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:mobi_esim/models/model.dart';
+import 'package:mobi_esim/providers/manager_provider.dart';
+import 'package:provider/provider.dart';
 
 List<dynamic> data = [];
 
@@ -127,6 +129,40 @@ class Manager {
       if (response.statusCode == 200) {
         print('Registration successful!');
         print('Response body: ${response.body}');
+        return response;
+      } else {
+        print('Registration failed. Status code: ${response.statusCode}');
+        print('Response body: ${response.body}');
+        return response;
+      }
+    } catch (e) {
+      print('$e is the error');
+      rethrow;
+    }
+  }
+
+  Future<http.Response> DeleteUser(
+    String email,
+  ) async {
+    try {
+      var api = 'http://165.73.252.118:4000/api/auth/delete';
+
+      Map<String, dynamic> requestData = {"email": "$email", "type": "email"};
+
+      String requestBody = jsonEncode(requestData);
+
+      final response = await http.post(
+        Uri.parse(api),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: requestBody,
+      );
+
+      if (response.statusCode == 200) {
+        print('account deleted successfully!');
+        print('Response body: ${response.body}');
+
         return response;
       } else {
         print('Registration failed. Status code: ${response.statusCode}');

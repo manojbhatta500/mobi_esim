@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mobi_esim/firebase_options.dart';
 import 'package:mobi_esim/loading.dart';
 import 'package:mobi_esim/providers/manager_provider.dart';
@@ -39,7 +40,13 @@ void main() async {
 
   //Load our .env file that contains our Stripe Secret key
   await dotenv.load(fileName: "assets/.env");
-  print('hello world');
+  print('initilization of hive');
+
+  await Hive.initFlutter();
+
+  final box = await Hive.openBox('userData');
+
+  print('hive initilization is done');
 
   runApp(Root());
 }

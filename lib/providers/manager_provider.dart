@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
 import 'package:mobi_esim/models/model.dart';
 
@@ -201,12 +202,63 @@ class Manager_Provider with ChangeNotifier {
   String get token => _token;
   String get userid => _userid;
 
-  void setUserData(String token, String userid) {
+  bool _show = true;
+  bool get show => _show;
+
+  void setUserData(String token, String userid) async {
     _token = token;
-    print('token$_token');
+    print('token of  provider class : $_token');
+
+    await storeUserToken(token);
+
+    var hive_token = await getUserToken();
+
+    print('token of  hive class : $hive_token');
 
     _userid = userid;
 
-    print('token$_userid');
+    storeUserId(userid);
+
+    print('userid of  provider class : $_userid');
+
+    var hive_userid = await getUserId();
+
+    print('userid of  hive class : $hive_userid');
+
+    _show = false;
+  }
+
+  //saving userdata in hive
+
+  Future<void> storeUserToken(String token) async {
+    final box = await Hive.box('userData');
+    box.put('token', token);
+  }
+
+  Future<void> storeUserId(String Id) async {
+    final box = await Hive.box('userData');
+    box.put('id', Id);
+  }
+  // getting userdata from hive
+
+  Future<String> getUserToken() async {
+    final box = await Hive.box('userData');
+    return box.get('token') ?? '';
+  }
+
+  Future<String> getUserId() async {
+    final box = await Hive.box('userData');
+    return box.get('id') ?? '';
+  }
+
+  void cleardata(BuildContext context) async {
+    try {
+      final box = await Hive.box('userData');
+      box.clear();
+      print('UserData box cleared successfully.');
+      _show = true;
+    } catch (error) {
+      print('Error clearing UserData box: $error');
+    }
   }
 }

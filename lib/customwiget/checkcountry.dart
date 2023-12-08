@@ -154,21 +154,25 @@ class _CheckCountryState extends State<CheckCountry> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    showModalBottomSheet(
-                      context: context,
-                      builder: (context) {
-                        return Redirect();
-                      },
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20),
+                    if (prov.show == false) {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (context) {
+                          return Redirect();
+                        },
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20),
+                          ),
                         ),
-                      ),
-                      isScrollControlled: true,
-                    ).then((value) {
-                      print('dismissed bottom modal sheet');
-                    });
+                        isScrollControlled: true,
+                      ).then((value) {
+                        print('dismissed bottom modal sheet');
+                      });
+                    } else {
+                      Navigator.pushNamed(context, '/signup');
+                    }
                   },
                   child: Center(
                       child: Container(

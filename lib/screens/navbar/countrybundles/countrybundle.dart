@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mobi_esim/customwiget/logbutton.dart';
+import 'package:mobi_esim/providers/manager_provider.dart';
 import 'package:mobi_esim/screens/navbar/countrybundles/tabpages/global.dart';
 import 'package:mobi_esim/screens/navbar/countrybundles/tabpages/countrylist.dart';
 import 'package:mobi_esim/screens/navbar/countrybundles/tabpages/regions.dart';
+import 'package:provider/provider.dart';
 
 class CountryBundle extends StatefulWidget {
   const CountryBundle({super.key});
@@ -17,6 +19,9 @@ class _CountryBundleState extends State<CountryBundle>
   TextEditingController inputcountry = TextEditingController();
 
   String currentSearch = '';
+
+  String token = '';
+  String userid = '';
 
   @override
   void initState() {
@@ -34,11 +39,27 @@ class _CountryBundleState extends State<CountryBundle>
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
+    final prov = Provider.of<Manager_Provider>(context);
+
+    void getdata() async {
+      var hive_userid = await prov.getUserId();
+      var hive_token = await prov.getUserToken();
+      token = hive_token;
+      userid = hive_userid;
+      print('Hive token value: $hive_token');
+      print('Hive userid value: $hive_userid');
+      print('local token value: $token');
+      print('local userid value: $userid');
+    }
+
     return SafeArea(
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             print('hello');
+
+            getdata();
           },
           child: Image.asset(
             'assets/fab.png',
@@ -61,7 +82,11 @@ class _CountryBundleState extends State<CountryBundle>
                       "Let's Explore!",
                       style: TextStyle(fontSize: 20, color: Color(0xff3b57a6)),
                     ),
-                    LogButton()
+                    prov.show
+                        ? LogButton()
+                        : Container(
+                            child: Text(''),
+                          )
                   ],
                 ),
               ),

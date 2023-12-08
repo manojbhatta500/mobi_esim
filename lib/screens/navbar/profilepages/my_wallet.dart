@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobi_esim/customwiget/profile_menu.dart';
+import 'package:mobi_esim/providers/manager_provider.dart';
 import 'package:mobi_esim/screens/voucher.dart';
+import 'package:provider/provider.dart';
 
 class MyWallet extends StatefulWidget {
   const MyWallet({super.key});
@@ -15,6 +17,7 @@ class _MyWalletState extends State<MyWallet> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
     return SafeArea(
         child: Scaffold(
             body: SingleChildScrollView(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobi_esim/informant.dart';
 import 'package:mobi_esim/providers/manager_provider.dart';
 
 import 'package:mobi_esim/screens/navbar/countrybundles/countrybundle.dart';

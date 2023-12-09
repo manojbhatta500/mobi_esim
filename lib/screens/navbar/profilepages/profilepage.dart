@@ -22,7 +22,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
     Widget _buildPopupDialog(BuildContext context, String email) {
       return new AlertDialog(
-        title: const Text('Delete Account'),
+        title: const Text('Log out'),
         content: new Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -131,8 +131,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         _buildPopupDialog(context, prov.email),
                   );
                 },
-                child: ProfileMenu(
-                    geticon: Icons.logout, heading: 'Delete account'))
+                child: ProfileMenu(geticon: Icons.logout, heading: 'Log out'))
           ],
         ),
       ),

@@ -131,7 +131,7 @@ class _CountryBundleState extends State<CountryBundle>
                             child: Padding(
                               padding: const EdgeInsets.all(3.0),
                               child: Text(
-                                'country',
+                                'Country',
                                 style: TextStyle(color: Color(0xff41b8ea)),
                               ),
                             ),

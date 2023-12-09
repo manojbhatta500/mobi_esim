@@ -22,6 +22,7 @@ class Data extends StatelessWidget {
           children: [
             ListView.builder(
               shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
               itemCount: realdata?.operators![0].packages!.length ?? 0,
               itemBuilder: (context, index) {
                 var package = realdata?.operators![0].packages![index];
@@ -41,12 +42,13 @@ class Data extends StatelessWidget {
                     checker: true,
                     price: (package?.price ?? 0).toString(),
                     name: package?.id?.toString() ?? '',
+                    istopuo: false,
                   ),
                 );
               },
             ),
             SizedBox(
-              height: 20,
+              height: 100,
             ),
           ],
         ),

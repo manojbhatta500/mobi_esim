@@ -10,6 +10,7 @@ class PlanDetails extends StatelessWidget {
   final bool checker;
   final String price;
   final String name;
+  final bool istopuo;
   PlanDetails(
       {required this.countrycode,
       required this.name,
@@ -17,7 +18,8 @@ class PlanDetails extends StatelessWidget {
       required this.data,
       required this.covrage,
       required this.checker,
-      required this.price});
+      required this.price,
+      required this.istopuo});
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,12 @@ class PlanDetails extends StatelessWidget {
 
     String result = removeAfterFirstDash(name);
 
+    String capitalize(String s) {
+      return s.isNotEmpty ? s[0].toUpperCase() + s.substring(1) : s;
+    }
+
+    String capitalizedResult = capitalize(result);
+
     return Container(
       height: 0.28 * height,
       width: 0.9 * width,
@@ -43,20 +51,25 @@ class PlanDetails extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                '$result',
-                style: TextStyle(color: Color(0xff0082d8), fontSize: 15),
-              ),
-              CircleAvatar(
-                radius: 25,
-                backgroundColor: Colors.white10,
-                child: CountryFlag.fromCountryCode(countrycode, width: 60),
-              ),
-            ],
-          ),
+          istopuo
+              ? SizedBox(
+                  height: 1,
+                )
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      '$capitalizedResult',
+                      style: TextStyle(color: Color(0xff0082d8), fontSize: 15),
+                    ),
+                    CircleAvatar(
+                      radius: 25,
+                      backgroundColor: Colors.white10,
+                      child:
+                          CountryFlag.fromCountryCode(countrycode, width: 60),
+                    ),
+                  ],
+                ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

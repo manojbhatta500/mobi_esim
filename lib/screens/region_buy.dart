@@ -190,7 +190,7 @@ class RegionBuy extends StatelessWidget {
                   )),
               Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: Text('Available Packages',
+                child: Text('available top-ups',
                     style: TextStyle(color: Color(0xff0082d8), fontSize: 15)),
               ),
               Container(

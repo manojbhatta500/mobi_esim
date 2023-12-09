@@ -39,50 +39,55 @@ class Global extends StatelessWidget {
           body: Column(
             children: [
               Container(
-                height: 0.1 * height,
+                height: 0.05 * height,
                 width: double.infinity,
-                child: TabBar(tabs: [
-                  Tab(
-                    child: Container(
-                      height: 0.06 * height,
-                      width: 0.3 * width,
-                      padding: EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        color: Color(0xff2941b8ea),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(3.0),
-                        child: Center(
-                          child: Text(
-                            'Data only',
-                            style: TextStyle(color: Color(0xff41b8ea)),
+                child: TabBar(
+                    indicatorColor: Colors.transparent,
+                    indicator: BoxDecoration(
+                      color: Colors.green[300],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    tabs: [
+                      Tab(
+                        child: Container(
+                          height: 0.05 * height,
+                          width: 0.3 * width,
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            color: Color(0xff2941b8ea),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Data only',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 10),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ),
-                  Tab(
-                    child: Container(
-                      height: 0.06 * height,
-                      width: 0.3 * width,
-                      padding: EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        color: Color(0xff2941b8ea),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(3.0),
-                        child: Center(
-                          child: Text(
-                            'Data/call/Text',
-                            style: TextStyle(color: Color(0xff41b8ea)),
+                      Tab(
+                        child: Container(
+                          height: 0.05 * height,
+                          width: 0.3 * width,
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            color: Color(0xff2941b8ea),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(3.0),
+                            child: Center(
+                              child: Text(
+                                'Data/call/Text',
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 10),
+                              ),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ),
-                ]),
+                    ]),
               ),
               Expanded(
                 child: TabBarView(children: [
@@ -211,7 +216,7 @@ class GlobalContainer extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(CupertinoIcons.globe),
+                  Icon(Icons.signal_cellular_alt),
                   SizedBox(
                     width: 5,
                   ),
@@ -232,7 +237,7 @@ class GlobalContainer extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(CupertinoIcons.tree),
+                  Icon(CupertinoIcons.globe),
                   SizedBox(
                     width: 5,
                   ),
@@ -288,7 +293,7 @@ class GlobalContainer extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      '\$$price-View details',
+                      '\$$price-Buy Now',
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                   ),

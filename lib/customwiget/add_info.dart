@@ -58,7 +58,7 @@ class _AddInfoState extends State<AddInfo> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
-                children: [Icon(Icons.check_box), Text('Plan Type')],
+                children: [Icon(Icons.policy), Text('Activation Policy')],
               ),
               Row(
                 children: [
@@ -67,10 +67,6 @@ class _AddInfoState extends State<AddInfo> {
               ),
             ],
           ),
-          Text(
-            '',
-            softWrap: true,
-          )
         ],
       ),
     );

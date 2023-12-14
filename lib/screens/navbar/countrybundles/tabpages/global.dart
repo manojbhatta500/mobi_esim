@@ -79,7 +79,7 @@ class Global extends StatelessWidget {
                             padding: const EdgeInsets.all(3.0),
                             child: Center(
                               child: Text(
-                                'Data/call/Text',
+                                'Data/Call/Text',
                                 style: TextStyle(
                                     color: Colors.black, fontSize: 10),
                               ),

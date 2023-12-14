@@ -15,6 +15,10 @@ class AddInfo extends StatefulWidget {
 }
 
 class _AddInfoState extends State<AddInfo> {
+  String replaceDashWithSpace(String inputString) {
+    return inputString.replaceAll('-', ' ');
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -49,7 +53,7 @@ class _AddInfoState extends State<AddInfo> {
                 children: [Icon(Icons.check_box), Text('Plan Type')],
               ),
               Row(
-                children: [Text('${widget.plan}')],
+                children: [Text(replaceDashWithSpace('${widget.plan}'))],
               ),
             ],
           ),
@@ -62,7 +66,7 @@ class _AddInfoState extends State<AddInfo> {
               ),
               Row(
                 children: [
-                  Text('${widget.policy}'),
+                  Text(replaceDashWithSpace('${widget.policy}')),
                 ],
               ),
             ],

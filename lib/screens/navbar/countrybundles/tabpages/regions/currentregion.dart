@@ -66,7 +66,7 @@ class DataTab extends StatelessWidget {
                             .operators![0].countries!.length
                             .toString(),
                         data: package.data ?? '',
-                        validity: '${package.day} days',
+                        validity: '${package.day} ',
                         price: '${package.price}',
                         image: image,
                         provider: provider,
@@ -183,7 +183,7 @@ class CurrentRegion extends StatelessWidget {
                           padding: const EdgeInsets.all(3.0),
                           child: Center(
                             child: Text(
-                              'Data/call/Text',
+                              'Data/Call/Text',
                               style: TextStyle(color: Color(0xff41b8ea)),
                             ),
                           ),

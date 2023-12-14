@@ -36,6 +36,7 @@ class _CheckCountryState extends State<CheckCountry> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     final prov = Provider.of<Manager_Provider>(context);
+
     var realdata = prov.packages;
 
     // Get the list of packages from the provider

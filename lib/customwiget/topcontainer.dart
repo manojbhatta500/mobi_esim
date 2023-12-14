@@ -86,7 +86,7 @@ class TopContainer extends StatelessWidget {
                 Row(
                   children: [
                     Icon(
-                      Icons.signal_cellular_4_bar_rounded,
+                      Icons.signal_cellular_alt,
                       color: Colors.black,
                     ),
                     SizedBox(

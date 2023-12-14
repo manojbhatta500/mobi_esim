@@ -2,8 +2,11 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobi_esim/customwiget/reg_country.dart';
+import 'package:mobi_esim/providers/manager_provider.dart';
 import 'package:mobi_esim/screens/navbar/countrybundles/tabpages/regions/currentregion.dart';
+import 'package:mobi_esim/screens/redirect.dart';
 import 'package:mobi_esim/screens/supported_region.dart';
+import 'package:provider/provider.dart';
 
 class RegionBuy extends StatelessWidget {
   RegionBuy({
@@ -30,10 +33,15 @@ class RegionBuy extends StatelessWidget {
 
   final String continent;
 
+  String replaceDashWithSpace(String inputString) {
+    return inputString.replaceAll('-', ' ');
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    final prov = Provider.of<Manager_Provider>(context);
 
     return SafeArea(
       child: Scaffold(
@@ -117,7 +125,7 @@ class RegionBuy extends StatelessWidget {
                           Row(
                             children: [
                               Icon(
-                                Icons.signal_cellular_4_bar_rounded,
+                                Icons.signal_cellular_alt,
                                 color: Colors.black,
                               ),
                               SizedBox(
@@ -195,6 +203,7 @@ class RegionBuy extends StatelessWidget {
               ),
               Container(
                 width: width,
+                height: 0.2 * height,
                 child: CarouselSlider(
                   options: CarouselOptions(
                     scrollDirection: Axis.horizontal,
@@ -205,7 +214,7 @@ class RegionBuy extends StatelessWidget {
                     return Builder(
                       builder: (BuildContext context) {
                         return Container(
-                            height: 0.2 * height,
+                            height: 0.1 * height,
                             width: width,
                             margin: EdgeInsets.only(
                                 left: 10, right: 10, bottom: 10, top: 10),
@@ -217,32 +226,6 @@ class RegionBuy extends StatelessWidget {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          CupertinoIcons.globe,
-                                          color: Colors.black,
-                                        ),
-                                        SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text(
-                                          'Countries',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14),
-                                        ),
-                                      ],
-                                    ),
-                                    RegCountry(
-                                      number: '${item.countries}',
-                                    )
-                                  ],
-                                ),
                                 Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -381,24 +364,47 @@ class RegionBuy extends StatelessWidget {
                           ],
                         ),
                         Row(
-                          children: [Text('$policy')],
+                          children: [Text(replaceDashWithSpace('$policy'))],
                         ),
                       ],
                     ),
                   ],
                 ),
               ),
-              Container(
-                width: 0.8 * width,
-                height: 0.06 * height,
-                decoration: BoxDecoration(
-                    color: Color(0xff3b57a6),
-                    borderRadius: BorderRadius.circular(20)),
-                child: Center(
-                    child: Text(
-                  '\$$price Buy now',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                )),
+              GestureDetector(
+                onTap: () {
+                  if (prov.show == false) {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (context) {
+                        return Redirect();
+                      },
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20),
+                        ),
+                      ),
+                      isScrollControlled: true,
+                    ).then((value) {
+                      print('dismissed bottom modal sheet');
+                    });
+                  } else {
+                    Navigator.pushNamed(context, '/signup');
+                  }
+                },
+                child: Container(
+                  width: 0.8 * width,
+                  height: 0.06 * height,
+                  decoration: BoxDecoration(
+                      color: Color(0xff3b57a6),
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Center(
+                      child: Text(
+                    '\$$price Buy now',
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  )),
+                ),
               ),
               SizedBox(
                 height: 10,
